@@ -1,5 +1,5 @@
 "use client"
-import { builder, Builder } from '@builder.io/react'
+import { builder, Builder, BuilderComponent } from '@builder.io/react'
 import { useEffect, useState } from 'react'
 import { notFound } from 'next/navigation'
 import BuilderRegistry from '@/lib/builder-registry'
@@ -65,7 +65,7 @@ export default function Page({ params }: PageProps) {
   return (
     <>
       <BuilderRegistry />
-      <Builder model="page" content={content} />
+      <BuilderComponent model="page" content={content} />
     </>
   )
 }
