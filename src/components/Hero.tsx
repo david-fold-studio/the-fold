@@ -159,7 +159,7 @@ export default function Hero({ data = heroData }: HeroProps) {
             <Button
               variant={data.secondaryButton.variant || 'secondary'}
               size={data.secondaryButton.size || 'md'}
-              onClick={data.secondaryButton.onClick || (data.secondaryButton.href ? () => window.open(data.secondaryButton.href, '_blank') : undefined)}
+              onClick={data.secondaryButton.onClick || (data.secondaryButton?.href ? () => window.open(data.secondaryButton!.href, '_blank') : undefined)}
             >
               {data.secondaryButton.text}
             </Button>
