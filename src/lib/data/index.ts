@@ -8,9 +8,9 @@ export class HomepageDataService {
   static async getHomepageData(): Promise<HomepageData> {
     // Future: integrate with CMS/API
     // For now, import from local data files
-    const { heroData } = await import('@/app/(pages)/homepage/data/hero')
-    const { benefitsData } = await import('@/app/(pages)/homepage/data/benefits')
-    const { caseStudiesData } = await import('@/app/(pages)/homepage/data/caseStudies')
+    const { heroData } = await import('@/app/(pages)/homepage/hero/data')
+    const { benefitsData } = await import('@/app/(pages)/homepage/benefits/data')
+    const { caseStudiesData } = await import('@/app/(pages)/homepage/case-studies/data')
     
     return {
       hero: heroData,
