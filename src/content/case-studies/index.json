@@ -1,0 +1,52 @@
+{
+  "studies": [
+    {
+      "id": "acme-redesign",
+      "title": "Acme Corp Website Redesign",
+      "slug": "acme-redesign",
+      "category": "web-design",
+      "featured": true,
+      "publishedAt": "2024-01-15",
+      "tags": ["design", "react", "typescript"],
+      "image": "https://via.placeholder.com/800x450/333333/ffffff?text=Acme+Corp+Redesign",
+      "excerpt": "Complete redesign of a corporate website with modern React architecture and improved user experience.",
+      "readTime": "8 min",
+      "order": 1,
+      "client": "Acme Corporation",
+      "year": "2024",
+      "services": ["Web Design", "Frontend Development", "UX Research"]
+    },
+    {
+      "id": "startup-app",
+      "title": "FinTech Mobile App",
+      "slug": "startup-app",
+      "category": "mobile",
+      "featured": true,
+      "publishedAt": "2024-02-20",
+      "tags": ["mobile", "fintech", "react-native"],
+      "image": "https://via.placeholder.com/800x450/333333/ffffff?text=FinTech+Mobile+App",
+      "excerpt": "Native mobile application for a fintech startup with advanced security and seamless user onboarding.",
+      "readTime": "12 min",
+      "order": 2,
+      "client": "FinStart Inc",
+      "year": "2024",
+      "services": ["Mobile Development", "UI/UX Design", "Backend Integration"]
+    },
+    {
+      "id": "ecommerce-platform",
+      "title": "E-commerce Platform Overhaul",
+      "slug": "ecommerce-platform",
+      "category": "ecommerce",
+      "featured": false,
+      "publishedAt": "2023-11-10",
+      "tags": ["ecommerce", "nextjs", "stripe"],
+      "image": "https://via.placeholder.com/800x450/333333/ffffff?text=E-commerce+Platform",
+      "excerpt": "Full-stack e-commerce platform with advanced inventory management and payment processing.",
+      "readTime": "15 min",
+      "order": 3,
+      "client": "RetailMax",
+      "year": "2023",
+      "services": ["Full-Stack Development", "Payment Integration", "Performance Optimization"]
+    }
+  ]
+}

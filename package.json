@@ -1,0 +1,50 @@
+{
+  "name": "the-fold",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "builder": "node builder-cli.js",
+    "builder:status": "node builder-cli.js status",
+    "builder:test": "node builder-cli.js test",
+    "builder:dev": "node builder-cli.js dev"
+  },
+  "dependencies": {
+    "@builder.io/dev-tools": "^1.11.4",
+    "@builder.io/react": "^8.2.6",
+    "@builder.io/sdk-react-nextjs": "^0.22.1",
+    "@mendable/firecrawl-js": "^1.21.1",
+    "@radix-ui/react-slot": "^1.2.3",
+    "autoprefixer": "^10.4.21",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "gray-matter": "^4.0.3",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.540.0",
+    "marked": "^16.2.1",
+    "next": "15.5.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.6.2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.5.0",
+    "postcss": "^8",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-attributes": "^1.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
