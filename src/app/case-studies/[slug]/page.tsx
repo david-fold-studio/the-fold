@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
