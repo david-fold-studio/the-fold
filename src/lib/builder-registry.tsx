@@ -12,7 +12,7 @@ import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Articles from '@/components/Articles'
 import Footer from '@/components/Footer'
-import Header from '@/components/Navigation'
+import Navigation from '@/components/Navigation'
 
 // Register components with Builder.io
 Builder.registerComponent(Hero, {
@@ -79,8 +79,8 @@ Builder.registerComponent(Footer, {
   name: 'Footer',
 })
 
-Builder.registerComponent(Header, {
-  name: 'Header',
+Builder.registerComponent(Navigation, {
+  name: 'Navigation',
 })
 
 // Register design tokens with Builder.io for VS Code extension
