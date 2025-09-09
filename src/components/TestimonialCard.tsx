@@ -14,8 +14,7 @@ export default function TestimonialCard({ name, title, quote }: TestimonialCardP
       style={{
         backgroundColor: 'var(--color-grey-850)', // Dark grey background color
         borderColor: 'var(--color-grey-800)',     // Slightly lighter grey for the border
-        '--hover-border-color': 'rgb(75, 85, 99)', // gray-600 color for the animation
-      }}
+      } as React.CSSProperties}
     >
       {/* Inner container that arranges content vertically with spacing */}
       <div className='flex flex-col space-y-6 h-100%'>
