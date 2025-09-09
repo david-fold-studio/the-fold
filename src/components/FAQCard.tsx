@@ -10,8 +10,7 @@ export default function FAQCard({ question, answer }: FAQCardProps) {
       style={{
         backgroundColor: 'var(--color-grey-850)',
         borderColor: 'var(--color-grey-800)',
-        '--hover-border-color': 'rgb(75, 85, 99)',
-      }}
+      } as React.CSSProperties}
     >
       <div className='flex flex-col space-y-6 h-100%'>
         <div className='h-100%'>
