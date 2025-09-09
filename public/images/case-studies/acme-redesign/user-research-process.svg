@@ -1,0 +1,68 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#1a1a1a"/>
+  
+  <!-- Title -->
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">User Research Process</text>
+  
+  <!-- Research stages -->
+  <g>
+    <!-- Stage 1: Interviews -->
+    <rect x="100" y="120" width="200" height="150" rx="8" fill="#2a2a2a" stroke="#555"/>
+    <circle cx="150" cy="170" r="20" fill="#4CAF50"/>
+    <text x="150" y="177" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">1</text>
+    <text x="200" y="150" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">User Interviews</text>
+    <text x="200" y="180" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">15 participants</text>
+    <text x="200" y="200" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">30-45 min sessions</text>
+    <text x="200" y="220" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">Pain points identified</text>
+    
+    <!-- Arrow 1 -->
+    <path d="M320 195 L360 195 M350 185 L360 195 L350 205" stroke="white" stroke-width="2"/>
+    
+    <!-- Stage 2: Analytics -->
+    <rect x="380" y="120" width="200" height="150" rx="8" fill="#2a2a2a" stroke="#555"/>
+    <circle cx="430" cy="170" r="20" fill="#2196F3"/>
+    <text x="430" y="177" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">2</text>
+    <text x="480" y="150" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Analytics Deep-Dive</text>
+    <text x="480" y="180" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">6 months of data</text>
+    <text x="480" y="200" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">User behavior patterns</text>
+    <text x="480" y="220" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">Conversion funnels</text>
+    
+    <!-- Arrow 2 -->
+    <path d="M600 195 L640 195 M630 185 L640 195 L630 205" stroke="white" stroke-width="2"/>
+    
+    <!-- Stage 3: Competitive Analysis -->
+    <rect x="660" y="120" width="200" height="150" rx="8" fill="#2a2a2a" stroke="#555"/>
+    <circle cx="710" cy="170" r="20" fill="#FF9800"/>
+    <text x="710" y="177" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">3</text>
+    <text x="760" y="150" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Competitive Analysis</text>
+    <text x="760" y="180" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">10 competitors</text>
+    <text x="760" y="200" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">Feature comparison</text>
+    <text x="760" y="220" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">Best practices</text>
+    
+    <!-- Arrow 3 -->
+    <path d="M880 195 L920 195 M910 185 L920 195 L910 205" stroke="white" stroke-width="2"/>
+    
+    <!-- Stage 4: Workshops -->
+    <rect x="940" y="120" width="200" height="150" rx="8" fill="#2a2a2a" stroke="#555"/>
+    <circle cx="990" cy="170" r="20" fill="#9C27B0"/>
+    <text x="990" y="177" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">4</text>
+    <text x="1040" y="150" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Stakeholder Workshops</text>
+    <text x="1040" y="180" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">5 key stakeholders</text>
+    <text x="1040" y="200" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">Goal alignment</text>
+    <text x="1040" y="220" font-family="Arial, sans-serif" font-size="12" fill="#ccc" text-anchor="middle">Priority mapping</text>
+  </g>
+  
+  <!-- Key insights -->
+  <rect x="200" y="320" width="800" height="200" rx="12" fill="#333" stroke="#555"/>
+  <text x="600" y="360" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Key Insights Discovered</text>
+  
+  <text x="300" y="400" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4CAF50">• 73% of users abandoned on mobile</text>
+  <text x="300" y="425" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2196F3">• Average page load time: 6.2 seconds</text>
+  <text x="300" y="450" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FF9800">• Users couldn't find key information</text>
+  <text x="300" y="475" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#9C27B0">• Outdated design hurt credibility</text>
+  
+  <!-- Results box -->
+  <rect x="250" y="560" width="700" height="60" rx="8" fill="#1e3a8a" stroke="#3b82f6"/>
+  <text x="600" y="585" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Research informed 100% of design decisions</text>
+  <text x="600" y="605" font-family="Arial, sans-serif" font-size="12" fill="#bfdbfe" text-anchor="middle">Leading to 300% increase in conversion rates</text>
+</svg>

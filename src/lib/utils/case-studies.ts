@@ -3,7 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { CaseStudy, CaseStudyContent, CaseStudyCollection } from '@/lib/types/case-studies'
 
-const contentDirectory = path.join(process.cwd(), 'src/content/case-studies')
+const contentDirectory = path.join(process.cwd(), 'src/app/(pages)/case-studies/content')
 
 export async function getAllCaseStudies(): Promise<CaseStudy[]> {
   try {

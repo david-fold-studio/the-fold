@@ -2,11 +2,11 @@
 updatedAt: "2024-01-15"
 ---
 
-# Project Overview
+## Project Overview
 
 Acme Corporation approached us with a legacy website that hadn't been updated in over five years. Their existing site was built on outdated technology, had poor mobile responsiveness, and wasn't converting visitors effectively.
 
-![Before and after: A complete transformation of Acme's digital presence](https://via.placeholder.com/800x450/333333/ffffff?text=Before+and+After+Comparison)
+![Before and after: A complete transformation of Acme's digital presence](./assets/before-after-comparison.svg)
 
 ## The Challenge
 
@@ -16,6 +16,15 @@ The main challenges we faced included:
 - **Poor Mobile Experience**: Over 60% of traffic was mobile, but the site wasn't responsive
 - **Low Conversion Rates**: Less than 2% conversion rate on key landing pages
 - **Slow Performance**: Page load times averaging 6+ seconds
+
+### Additional Technical Challenges
+
+We also discovered several secondary issues during our initial audit:
+
+1. **SEO Problems**: No structured data or proper meta tags
+2. **Accessibility Issues**: Poor color contrast and missing alt text
+3. **Security Vulnerabilities**: Outdated plugins and dependencies
+4. **Content Management**: No clear workflow for content updates
 
 ## Our Approach
 
@@ -30,7 +39,29 @@ Before touching any code, we conducted extensive research to understand Acme's u
 - Competitive analysis of industry leaders
 - Stakeholder workshops to align on objectives
 
-![User research sessions helped us understand real customer needs](https://via.placeholder.com/1200x675/333333/ffffff?text=User+Research+Process)
+![User research sessions helped us understand real customer needs](./assets/user-research-process.svg)
+
+#### Research Methodology
+
+Our research process followed these key phases:
+
+1. **Quantitative Analysis**
+   - Google Analytics deep dive
+   - Heatmap analysis with Hotjar
+   - A/B testing of current pages
+   - Conversion funnel analysis
+
+2. **Qualitative Research**
+   - One-on-one user interviews
+   - Focus group sessions
+   - Customer journey mapping
+   - Persona development
+
+3. **Competitive Benchmarking**
+   - Feature comparison matrix
+   - UI/UX best practices analysis
+   - Performance benchmarking
+   - Content strategy review
 
 ### Design System Development
 
@@ -41,14 +72,49 @@ We created a comprehensive design system that would scale across all of Acme's d
 - **Component Library**: Reusable components for consistency
 - **Responsive Grid**: Flexible layout system for all devices
 
+#### Design Principles
+
+Our design system was built on five core principles:
+
+1. **Accessibility First**: WCAG 2.1 AA compliance from the start
+2. **Mobile-First Design**: Optimized for mobile experiences
+3. **Performance-Driven**: Every component optimized for speed
+4. **Brand Consistency**: Cohesive visual language across touchpoints
+5. **Scalability**: Built to grow with the business
+
 ## Technical Implementation
 
 The new website was built using modern technologies:
 
-- **Next.js 14**: For server-side rendering and optimal performance
-- **TypeScript**: For type safety and better developer experience
-- **Tailwind CSS**: For consistent styling and faster development
+### Frontend Stack
+
+1. **Next.js 14**: For server-side rendering and optimal performance
+2. **TypeScript**: For type safety and better developer experience
+3. **Tailwind CSS**: For consistent styling and faster development
+4. **React Query**: For efficient data fetching and caching
+
+### Backend & CMS
+
 - **Sanity CMS**: For easy content management
+- **Vercel**: For hosting and deployment
+- **Cloudinary**: For image optimization and delivery
+- **Stripe**: For payment processing
+
+### Performance Optimizations
+
+We implemented several performance optimizations:
+
+1. **Image Optimization**
+   - Next.js Image component for automatic optimization
+   - WebP format with fallbacks
+   - Lazy loading for below-the-fold content
+   - Responsive images with multiple breakpoints
+
+2. **Code Splitting**
+   - Route-based code splitting
+   - Component-level lazy loading
+   - Dynamic imports for heavy libraries
+   - Tree shaking for unused code removal
 
 ![Our comprehensive component library ensured design consistency](https://via.placeholder.com/800x450/333333/ffffff?text=Component+Library)
 

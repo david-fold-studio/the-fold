@@ -9,6 +9,7 @@ import Pricing from '@/components/Pricing'
 import Process from '@/components/Process'
 import Services from '@/components/Services'
 import Testimonials from '@/components/Testimonials'
+import { faqData } from './homepage/faq/data'
 
 export default function Home() {
   return (
@@ -43,8 +44,8 @@ export default function Home() {
         <Process />
         <Pricing />
         <Testimonials />
-        <FAQ />
-        <Articles />
+        <FAQ data={faqData} />
+        {/* <Articles /> */}
         <Footer />
       </main>
     </div>

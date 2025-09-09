@@ -1,9 +1,4 @@
 import type { BenefitsData } from '@/lib/data/types'
-// Import section assets using Next.js static imports
-import automateIcon from '../assets/automate.svg'
-import analyzeIcon from '../assets/analyze.svg'
-import integrateIcon from '../assets/integrate.svg'
-import sophisticatedIcon from '../assets/sophisticated.svg'
 
 export const benefitsData: BenefitsData = {
   eyebrowText: "Why Now?",
@@ -16,22 +11,22 @@ export const benefitsData: BenefitsData = {
     {
       title: 'Automate',
       description: 'Automate manual, error-prone processes',
-      icon: automateIcon,
+      icon: 'Lightning',
     },
     {
       title: 'Analyze',
       description: 'Build custom dashboards\nand tools',
-      icon: analyzeIcon,
+      icon: 'ChartPie',
     },
     {
       title: 'Integrate',
       description: 'Integrate systems for\nseamless data flow',
-      icon: integrateIcon,
+      icon: 'ShareNetwork',
     },
     {
       title: 'Get Sophisticated',
       description: 'Create AI-powered agents\nfor smarter service',
-      icon: sophisticatedIcon,
+      icon: 'Robot',
     }
   ]
 }

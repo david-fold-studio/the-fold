@@ -85,6 +85,19 @@ export interface ArticlesData {
   articles: ArticleData[]
 }
 
+export interface TestimonialData {
+  name: string
+  title: string
+  quote: string
+}
+
+export interface TestimonialsData {
+  eyebrowText: string
+  title: string
+  paragraphs: string[]
+  testimonials: TestimonialData[]
+}
+
 // Animation configuration types
 export interface AnimationConfig {
   delay?: number

@@ -1,0 +1,9 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#333333"/>
+  <rect x="100" y="100" width="600" height="250" rx="12" fill="#444" stroke="#555" stroke-width="2"/>
+  <text x="400" y="240" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">FinTech Mobile App</text>
+  <rect x="320" y="140" width="160" height="280" rx="20" fill="#555" stroke="#666" stroke-width="2" transform="scale(0.7) translate(180, 40)"/>
+  <circle cx="400" cy="170" r="8" fill="#666"/>
+  <rect x="340" y="190" width="120" height="6" rx="3" fill="#666"/>
+  <rect x="360" y="210" width="80" height="4" rx="2" fill="#555"/>
+</svg>

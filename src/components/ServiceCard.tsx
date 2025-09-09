@@ -33,61 +33,26 @@ export default function ServiceCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Fixed Eyebrow Header with Content Transition */}
+      {/* Checkmark in Circle */}
       <div className="mb-6 flex items-start justify-start">
         <div 
-          className={`rounded-full border px-3 py-1.5 flex items-center gap-2 transition-all duration-400 ease-out overflow-hidden ${
-            isHovered ? 'min-w-[140px]' : 'w-8 h-8 p-0 justify-center'
-          }`}
+          className="w-8 h-8 rounded-full border flex items-center justify-center"
           style={{
             background: 'var(--gradient-subtle)',
             borderColor: 'var(--color-grey-700)'
           }}
         >
-          {/* Checkmark Icon - Default State */}
-          <Check 
-            className={`text-white transition-all duration-300 flex-shrink-0 ${
-              isHovered 
-                ? 'w-0 h-0 opacity-0 scale-0' 
-                : 'w-4 h-4 opacity-100 scale-100'
-            }`}
-          />
-          
-          {/* Text - Hover State */}
-          <span 
-            className={`badge-text whitespace-nowrap transition-all duration-300 ${
-              isHovered 
-                ? 'opacity-100 scale-100' 
-                : 'opacity-0 scale-95 w-0'
-            }`}
-            style={{
-              transitionDelay: isHovered ? '150ms' : '0ms'
-            }}
-          >
-            {eyebrowText.toUpperCase()}
-          </span>
-          
-          {/* Arrow Icon - Hover State */}
-          <ArrowRight 
-            className={`text-[var(--color-grey-200)] transition-all duration-300 flex-shrink-0 ${
-              isHovered 
-                ? 'w-4 h-4 opacity-100 scale-100' 
-                : 'w-0 h-0 opacity-0 scale-0'
-            }`}
-            style={{
-              transitionDelay: isHovered ? '250ms' : '0ms'
-            }}
-          />
+          <Check className="w-4 h-4 text-white" />
         </div>
       </div>
 
-      <h3 className="h3 mb-4">
+      <h3 className="h3 mb-4" style={{ color: 'var(--color-body-strong)' }}>
         {title}
       </h3>
 
       <div className="space-y-3">
         {paragraphs.map((paragraph, index) => (
-          <p key={index} className="body-md">
+          <p key={index} className="body-md" style={{ color: 'var(--color-body-strong)' }}>
             {paragraph}
           </p>
         ))}

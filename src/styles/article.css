@@ -1,0 +1,61 @@
+/* Article Body Styling - For case studies, blogs, and all article content */
+.article-body {
+  color: var(--color-grey-150);
+  font-weight: var(--font-weight-light);
+}
+
+.article-body p {
+  margin-bottom: 1.5rem;
+}
+
+/* Reset headings to allow original .h1, .h2, .h3 classes to take precedence */
+.article-body h1,
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5,
+.article-body h6 {
+  color: inherit;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article-body ul,
+.article-body ol {
+  margin-bottom: 1.5rem;
+}
+
+.article-body li {
+  margin-bottom: 0.5rem;
+}
+
+/* Article Image styling with captions */
+.article-body .article-image {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.article-body .article-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.article-body .article-image figcaption {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-400);
+  font-style: italic;
+  margin-top: 0.75rem;
+  line-height: var(--line-height-sm);
+  text-align: center;
+}
+
+/* Fallback for regular images without figure wrapper */
+.article-body img:not(.article-image img) {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 2rem 0;
+  display: block;
+}

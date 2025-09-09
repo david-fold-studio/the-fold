@@ -1,10 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-
-const logoIcon = "http://localhost:3845/assets/2167948ec12bedeac37af8ce3bca359ea557f114.svg"
-const logoText = "http://localhost:3845/assets/0dbf8a332e546c9c2650c3736e7ecaef62e27989.svg"
-const portfolioIcon = "http://localhost:3845/assets/4b3143bde9c2a74b4d52f1a0e51c640ce077ad7d.svg"
+import { Calendar } from 'lucide-react'
+const logoFull = "/logo-full.svg"
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -31,32 +29,14 @@ export default function Navigation() {
         `}>
           
           {/* Logo Section */}
-          <div className={`
-            flex items-center transition-all duration-300
-            ${isScrolled ? 'w-[180px] px-0 py-0' : 'w-[41px] px-0 py-0 mr-2.5'}
-          `}>
-            <div className="flex items-center gap-2 h-14 px-2">
-              <div className="w-9 h-9 flex items-center justify-center">
-                <img 
-                  src={logoIcon} 
-                  alt="Logo" 
-                  className="w-[21.477px] h-[21.477px]"
-                />
-              </div>
-              
-              {isScrolled && (
-                <div className={`
-                  transition-all duration-300 overflow-hidden
-                  ${isScrolled ? 'w-[99.373px] opacity-100' : 'w-0 opacity-0'}
-                `}>
-                  <img 
-                    src={logoText} 
-                    alt="The Fold" 
-                    className="w-[99.373px] h-[9.523px]"
-                  />
-                </div>
-              )}
-            </div>
+          <div className="flex items-center px-2 py-0 w-[180px]">
+            <a href="/" className="flex items-center h-14 w-full">
+              <img 
+                src={logoFull} 
+                alt="The Fold" 
+                className="w-full h-14 object-contain"
+              />
+            </a>
           </div>
 
           {/* Divider - only show when scrolled */}
@@ -76,13 +56,7 @@ export default function Navigation() {
               Projects
             </a>
             <a 
-              href="#articles" 
-              className="px-2 py-1 text-[#cccccc] text-[14px] font-medium tracking-[0.28px] hover:text-white transition-colors cursor-pointer"
-            >
-              Articles
-            </a>
-            <a 
-              href="#contact" 
+              href="mailto:hello@thefold.studio" 
               className="px-2 py-1 text-[#cccccc] text-[14px] font-medium tracking-[0.28px] hover:text-white transition-colors cursor-pointer"
             >
               Contact
@@ -108,13 +82,17 @@ export default function Navigation() {
                 Book a call
               </Button>
             ) : (
-              <div className="w-8 h-8 flex items-center justify-center cursor-pointer">
-                <img 
-                  src={portfolioIcon} 
-                  alt="Portfolio" 
-                  className="w-4 h-4"
+              <a 
+                href="https://app.usemotion.com/meet/david-de-jong/discovery"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 flex items-center justify-center cursor-pointer ml-6"
+              >
+                <Calendar 
+                  className="w-4 h-4 text-[#cccccc] hover:text-white transition-colors"
+                  fill="currentColor"
                 />
-              </div>
+              </a>
             )}
           </div>
         </nav>

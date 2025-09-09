@@ -2,9 +2,48 @@ import Navigation from '@/components/Navigation'
 import { getCaseStudyBySlug, getAllCaseStudies, getRelatedCaseStudies } from '@/lib/utils/case-studies'
 import { notFound } from 'next/navigation'
 import { marked } from 'marked'
+
+// Configure marked to handle relative image paths
+async function processContent(content: string, slug: string): Promise<string> {
+  // Replace relative image paths with absolute paths to public directory
+  const processedContent = content.replace(
+    /!\[([^\]]*)\]\(\.\/assets\/([^)]+)\)/g,
+    `![$1](/images/case-studies/${slug}/$2)`
+  )
+  
+  // Configure marked with custom renderer for images and headings
+  const renderer = new marked.Renderer()
+  
+  // Custom image renderer
+  renderer.image = function(token) {
+    // Modern marked.js passes a token object, not separate parameters
+    const imageUrl = token.href
+    const imageTitle = token.title
+    const imageText = token.text
+    
+    return `
+      <figure class="article-image">
+        <img src="${imageUrl}" alt="${imageText || ''}" title="${imageTitle || ''}" />
+        ${imageText ? `<figcaption>${imageText}</figcaption>` : ''}
+      </figure>
+    `
+  }
+  
+  // Custom heading renderers to apply design system classes
+  renderer.heading = function(token) {
+    const level = token.depth
+    const text = token.text
+    const className = level <= 3 ? `h${level}` : ''
+    
+    return `<h${level} class="${className}">${text}</h${level}>`
+  }
+  
+  return await marked(processedContent, { renderer })
+}
 import Link from 'next/link'
 import Image from 'next/image'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
+import type { Metadata } from 'next'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -17,6 +56,97 @@ export async function generateStaticParams() {
   }))
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params
+  const study = await getCaseStudyBySlug(resolvedParams.slug)
+  
+  if (!study) {
+    return {
+      title: 'Case Study Not Found',
+    }
+  }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://the-fold.vercel.app'
+  const pageUrl = `${siteUrl}/case-studies/${study.meta.slug}`
+  const imageUrl = study.meta.image.startsWith('/') 
+    ? `${siteUrl}${study.meta.image}` 
+    : study.meta.image
+
+  return {
+    title: `${study.meta.title} - Case Study | The Fold`,
+    description: study.meta.excerpt,
+    keywords: [
+      ...study.meta.tags,
+      ...study.meta.services,
+      'case study',
+      'web development',
+      'design',
+      'The Fold'
+    ],
+    authors: [{ name: 'The Fold' }],
+    creator: 'The Fold',
+    publisher: 'The Fold',
+    
+    // Open Graph
+    openGraph: {
+      title: study.meta.title,
+      description: study.meta.excerpt,
+      url: pageUrl,
+      siteName: 'The Fold',
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 450,
+          alt: study.meta.title,
+        }
+      ],
+      locale: 'en_US',
+      type: 'article',
+      publishedTime: study.meta.publishedAt,
+      authors: ['The Fold'],
+      section: 'Case Studies',
+      tags: study.meta.tags,
+    },
+    
+    // Twitter
+    twitter: {
+      card: 'summary_large_image',
+      title: study.meta.title,
+      description: study.meta.excerpt,
+      images: [imageUrl],
+      creator: '@thefoldstudio',
+      site: '@thefoldstudio',
+    },
+    
+    // Additional SEO
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    
+    // Canonical URL
+    alternates: {
+      canonical: pageUrl,
+    },
+    
+    // Schema.org structured data
+    other: {
+      'article:author': 'The Fold',
+      'article:published_time': study.meta.publishedAt,
+      'article:section': study.meta.category,
+      'article:tag': study.meta.tags.join(', '),
+    },
+  }
+}
+
 export default async function CaseStudyPage({ params }: PageProps) {
   const resolvedParams = await params
   const study = await getCaseStudyBySlug(resolvedParams.slug)
@@ -26,9 +156,59 @@ export default async function CaseStudyPage({ params }: PageProps) {
   }
 
   const relatedStudies = await getRelatedCaseStudies(resolvedParams.slug, 2)
+  const processedContent = await processContent(study.content, study.meta.slug)
+
+  // JSON-LD structured data for SEO
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://the-fold.vercel.app'
+  const pageUrl = `${siteUrl}/case-studies/${study.meta.slug}`
+  const imageUrl = study.meta.image.startsWith('/') 
+    ? `${siteUrl}${study.meta.image}` 
+    : study.meta.image
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: study.meta.title,
+    description: study.meta.excerpt,
+    image: imageUrl,
+    author: {
+      '@type': 'Organization',
+      name: 'The Fold',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Fold',
+      url: siteUrl,
+    },
+    datePublished: study.meta.publishedAt,
+    dateModified: study.meta.publishedAt,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': pageUrl,
+    },
+    articleSection: study.meta.category,
+    keywords: study.meta.tags.join(', '),
+    about: {
+      '@type': 'Thing',
+      name: study.meta.client,
+    },
+    mentions: study.meta.services.map(service => ({
+      '@type': 'Service',
+      name: service,
+    })),
+  }
 
   return (
     <div className="min-h-screen bg-black">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      
       <Navigation />
       
       <main className="pt-24">
@@ -103,8 +283,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <section className="pb-20">
           <div className="mx-auto max-w-[800px] px-6">
             <div 
-              className="prose prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: marked(study.content) }}
+              className="prose prose-invert max-w-none article-body"
+              dangerouslySetInnerHTML={{ __html: processedContent }}
             />
           </div>
         </section>

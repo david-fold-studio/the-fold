@@ -9,7 +9,7 @@ export default function ProcessCard({ phase, title, description }: ProcessCardPr
     <div
       className='rounded-2xl p-8 border group transition-all duration-300'
       style={{
-        backgroundColor: 'var(--color-grey-900)',
+        background: 'var(--gradient-subtle)',
         borderColor: 'var(--color-grey-800)',
       }}
     >
@@ -21,18 +21,18 @@ export default function ProcessCard({ phase, title, description }: ProcessCardPr
             borderColor: 'var(--color-grey-700)',
           }}
         >
-          <span className='badge-text'>
+          <span className='badge-text' style={{ color: 'var(--color-body-strong)' }}>
             {phase}
           </span>
         </div>
 
         <div>
-          <h3 className='h3 mb-4'>
+          <h3 className='h3 mb-4' style={{ color: 'var(--color-body-strong)' }}>
             {title}
           </h3>
           <div className='space-y-3'>
             {description.map((paragraph, index) => (
-              <p key={index} className='body-md'>
+              <p key={index} className='body-md' style={{ color: 'var(--color-body-strong)' }}>
                 {paragraph}
               </p>
             ))}

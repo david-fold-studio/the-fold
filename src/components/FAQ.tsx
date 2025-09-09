@@ -1,27 +1,17 @@
 'use client'
 
-import { useState } from 'react'
 import SectionHeader from './SectionHeader'
-import AccordionItem from './AccordionItem'
+import FAQCard from './FAQCard'
 import type { FAQData } from '@/lib/data/types'
-import { faqData } from '@/app/(pages)/homepage/faq/data'
 
 interface FAQProps {
-  data?: FAQData
+  data: FAQData
 }
 
-export default function FAQ({ data = faqData }: FAQProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(
-      openIndex === index ? null : index
-    )
-  }
-
+export default function FAQ({ data }: FAQProps) {
   return (
     <section className='bg-black py-20'>
-      <div className='mx-auto max-w-4xl px-4 sm:px-6 lg:px-8'>
+      <div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
         <div className='mb-16'>
           <SectionHeader
             eyebrowText={data.eyebrowText}
@@ -32,22 +22,26 @@ export default function FAQ({ data = faqData }: FAQProps) {
           />
         </div>
 
-        <div className='mb-12 space-y-4'>
-          {data.faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              question={faq.question}
-              answer={faq.answer}
-              isOpen={openIndex === index}
-              onToggle={() => toggleFAQ(index)}
-            />
-          ))}
+        <div className='mb-12'>
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {data.faqs.map((faq, index) => (
+              <div key={index} className="break-inside-avoid mb-6">
+                <FAQCard
+                  question={faq.question}
+                  answer={faq.answer}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className='text-center'>
-          <button className='inline-flex items-center rounded-full border border-gray-600 bg-gray-800/50 px-8 py-3 text-gray-300 transition-colors hover:bg-gray-700/50 hover:text-white'>
+          <a 
+            href="https://app.usemotion.com/meet/david-de-jong/discovery"
+            className='btn-base btn-outline btn-md'
+          >
             Ask Something Else
-          </button>
+          </a>
         </div>
       </div>
     </section>

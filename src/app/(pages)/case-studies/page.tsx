@@ -3,6 +3,34 @@ import { getAllCaseStudies } from '@/lib/utils/case-studies'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Case Studies - The Fold | Web Development & Design Portfolio',
+  description: 'Explore our latest web development and design case studies. See how The Fold has helped clients achieve their digital goals with modern React applications, mobile apps, and e-commerce platforms.',
+  keywords: [
+    'case studies',
+    'web development portfolio',
+    'design portfolio', 
+    'React development',
+    'Next.js projects',
+    'mobile app development',
+    'e-commerce development',
+    'UI/UX design',
+    'The Fold'
+  ],
+  openGraph: {
+    title: 'Case Studies - The Fold Portfolio',
+    description: 'Explore our latest web development and design case studies showcasing modern React applications, mobile apps, and e-commerce platforms.',
+    type: 'website',
+    url: '/case-studies',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Case Studies - The Fold Portfolio',
+    description: 'Explore our latest web development and design case studies.',
+  },
+}
 
 export default async function CaseStudiesPage() {
   const caseStudies = await getAllCaseStudies()

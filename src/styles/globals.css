@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Inter+Display:wght@100;200;300;400;500;600;700;800;900&family=General+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
+/* Import component-specific styles */
+@import './article.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -42,6 +45,11 @@
   --color-azure-37: #2f548f;
   --color-azure-55: #599fc2;
   --color-azure-85: #c1dcef;
+
+  /* Semantic Text Colors */
+  --color-body-strong: var(--color-grey-150);   /* Strong emphasis text, card content */
+  --color-body-base: var(--color-grey-400);     /* Default body text, descriptions */
+  --color-body-faint: var(--color-grey-200);    /* Subtle text, navigation, badges */
 
   /* Typography */
   --font-family-inter: 'Inter', sans-serif;
@@ -192,7 +200,7 @@
   line-height: var(--line-height-md);
   letter-spacing: var(--letter-spacing-sm);
   font-style: normal;
-  color: var(--color-grey-400);
+  color: var(--color-body-base);
 }
 
 .body-md .char {
@@ -211,7 +219,7 @@
   font-weight: var(--font-weight-light);
   line-height: var(--line-height-base);
   letter-spacing: var(--letter-spacing-sm);
-  color: var(--color-grey-200);
+  color: var(--color-body-faint);
 }
 
 .body-xs {
@@ -230,7 +238,7 @@
   line-height: var(--line-height-xs);
   letter-spacing: 1.8px;
   text-transform: uppercase;
-  color: var(--color-grey-200);
+  color: var(--color-body-faint);
 }
 
 /* Button classes */
@@ -367,11 +375,11 @@
   line-height: var(--line-height-md);
   letter-spacing: 0em;
   font-style: normal;
-  color: var(--color-grey-200);
+  color: var(--color-body-faint);
 }
 
 body {
-  color: var(--color-grey-400);
+  color: var(--color-body-base);
   background: var(--color-black-solid);
   font-family: var(--font-family-inter);
 }
@@ -384,6 +392,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 /* Utility classes */
 .line-clamp-3 {
   display: -webkit-box;
@@ -391,6 +400,8 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+
 
 /* Process section sticky behavior */
 .process-phase {
@@ -420,5 +431,22 @@ html {
 .checkmark-path {
   stroke-dasharray: 0 50;
   stroke-dashoffset: 0;
+}
+
+/* Testimonial border pulse animation */
+@keyframes pulse-border {
+  0% {
+    border-color: var(--color-grey-800);
+  }
+  50% {
+    border-color: var(--color-grey-600);
+  }
+  100% {
+    border-color: var(--color-grey-800);
+  }
+}
+
+.animate-pulse-border {
+  animation: pulse-border 1.2s ease-in-out;
 }
 
