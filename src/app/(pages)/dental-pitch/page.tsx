@@ -221,38 +221,37 @@ export default function DentalPitchPage() {
 
         {/* Your Specific Situation Section */}
         <FAQ
-          eyebrowText="YOUR SPECIFIC SITUATION"
-          title={`"Manpower" is your #1 bottleneck and you want "20% annual growth" - let's talk about that specifically:`}
-          paragraphs={[]}
-          hideButton={true}
-          singleColumn={true}
-          maxWidth="var(--width-800)"
-          faqs={[
-            {
-              question: "Which roles are hardest to fill across your 10 locations?",
-              answer: ""
-            },
-            {
-              question: "How much time does your staff spend, on average, doing low value tasks such as manual data entry or repetitive tasks such as follow-ups for billing?",
-              answer: ""
-            },
-            {
-              question: "How long does it take for you to hear about a problem at one of your locations?",
-              answer: ""
-            },
-            {
-              question: "To hit 20% growth, how many new staff would you traditionally need to hire?",
-              answer: ""
-            },
-            {
-              question: "What if you could achieve that growth with 50% fewer new hires through automation?",
-              answer: ""
-            },
-            {
-              question: "What would an extra $30K per provider annually in revenue enable?",
-              answer: ""
-            }
-          ]}
+          data={{
+            eyebrowText: "YOUR SPECIFIC SITUATION",
+            title: `"Manpower" is your #1 bottleneck and you want "20% annual growth" - let's talk about that specifically:`,
+            paragraphs: [],
+            faqs: [
+              {
+                question: "Which roles are hardest to fill across your 10 locations?",
+                answer: ""
+              },
+              {
+                question: "How much time does your staff spend, on average, doing low value tasks such as manual data entry or repetitive tasks such as follow-ups for billing?",
+                answer: ""
+              },
+              {
+                question: "How long does it take for you to hear about a problem at one of your locations?",
+                answer: ""
+              },
+              {
+                question: "To hit 20% growth, how many new staff would you traditionally need to hire?",
+                answer: ""
+              },
+              {
+                question: "What if you could achieve that growth with 50% fewer new hires through automation?",
+                answer: ""
+              },
+              {
+                question: "What would an extra $30K per provider annually in revenue enable?",
+                answer: ""
+              }
+            ]
+          }}
         />
 
         {/* Manpower-Focused Tech Solutions Section */}
@@ -411,22 +410,16 @@ export default function DentalPitchPage() {
         >
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <ServiceCard
-              title="Deep Diagnostic"
+              title="1. Deep Diagnostic"
               description="Technology stack and workflow analysis"
-              icon="number"
-              number={1}
             />
             <ServiceCard
-              title="Implementation Roadmap"
+              title="2. Implementation Roadmap"
               description="Detailed plan with ROI projections"
-              icon="number"
-              number={2}
             />
             <ServiceCard
-              title="Design, Build & Deploy"
+              title="3. Design, Build & Deploy"
               description="Sprint-based delivery with early value"
-              icon="number"
-              number={3}
             />
           </div>
 
