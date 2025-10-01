@@ -4,12 +4,14 @@ interface ContentCardProps {
   title: string
   description: string
   image?: string
+  imageFocal?: string
   alt?: string
   buttonText?: string
   buttonVariant?: 'primary' | 'secondary' | 'outline'
   buttonSize?: 'sm' | 'md' | 'lg'
   onButtonClick?: () => void
   href?: string
+  internalLink?: boolean
   className?: string
   aspectRatio?: string
   showImage?: boolean
@@ -19,12 +21,14 @@ export default function ContentCard({
   title,
   description,
   image,
+  imageFocal = 'center',
   alt,
   buttonText,
   buttonVariant = 'outline',
   buttonSize = 'sm',
   onButtonClick,
   href,
+  internalLink = false,
   className = '',
   aspectRatio = '12/9',
   showImage = true
@@ -33,7 +37,11 @@ export default function ContentCard({
     if (onButtonClick) {
       onButtonClick()
     } else if (href) {
-      window.open(href, '_blank')
+      if (internalLink) {
+        window.location.href = href
+      } else {
+        window.open(href, '_blank')
+      }
     }
   }
 
@@ -64,6 +72,7 @@ export default function ContentCard({
             src={image}
             alt={alt || title}
             className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-105'
+            style={{ objectPosition: imageFocal }}
           />
         </div>
       )}
