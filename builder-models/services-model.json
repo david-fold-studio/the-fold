@@ -1,0 +1,67 @@
+{
+  "name": "services-section",
+  "kind": "data",
+  "inputs": [
+    {
+      "name": "eyebrowText",
+      "friendlyName": "Eyebrow Text",
+      "type": "string",
+      "required": true,
+      "defaultValue": "Services",
+      "helperText": "Small text that appears above the main title"
+    },
+    {
+      "name": "title",
+      "friendlyName": "Section Title",
+      "type": "string",
+      "required": true,
+      "defaultValue": "We Build Digital Experiences That Convert",
+      "helperText": "Main heading for the services section"
+    },
+    {
+      "name": "paragraphs",
+      "friendlyName": "Description Paragraphs",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "paragraph",
+          "type": "longText",
+          "defaultValue": ""
+        }
+      ],
+      "defaultValue": [
+        {
+          "paragraph": "As a team of expert designers and developers, we craft digital experiences that perform beautifully across every touchpoint."
+        }
+      ],
+      "helperText": "Descriptive text that appears below the title"
+    },
+    {
+      "name": "services",
+      "friendlyName": "Services",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "title",
+          "friendlyName": "Service Title",
+          "type": "string",
+          "required": true,
+          "helperText": "Name of the service offered"
+        },
+        {
+          "name": "description",
+          "friendlyName": "Service Description",
+          "type": "longText",
+          "required": true,
+          "helperText": "Detailed description of what this service includes"
+        }
+      ],
+      "defaultValue": [
+        {
+          "title": "UX Design",
+          "description": "We create user experiences that feel effortless and intuitive. Through research, wireframing, and prototyping, we design interfaces that users love and businesses rely on. Every interaction is crafted with purpose."
+        }
+      ]
+    }
+  ]
+}

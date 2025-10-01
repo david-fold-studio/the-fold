@@ -1,0 +1,293 @@
+{
+  "name": "page",
+  "kind": "page",
+  "inputs": [
+    {
+      "name": "title",
+      "friendlyName": "Page Title",
+      "type": "string",
+      "required": true,
+      "defaultValue": "Homepage",
+      "helperText": "The title of this page - also used as browser tab title"
+    },
+    {
+      "name": "url",
+      "friendlyName": "Page URL",
+      "type": "string",
+      "required": true,
+      "defaultValue": "/",
+      "helperText": "The URL path for this page"
+    },
+    {
+      "name": "seo",
+      "friendlyName": "SEO Settings",
+      "type": "object",
+      "subFields": [
+        {
+          "name": "metaTitle",
+          "friendlyName": "Meta Title (SEO Title)",
+          "type": "string",
+          "required": true,
+          "defaultValue": "The Fold Studio - Digital Experiences That Convert",
+          "helperText": "SEO title tag (50-60 characters recommended). Used by search engines and social media."
+        },
+        {
+          "name": "metaDescription",
+          "friendlyName": "Meta Description",
+          "type": "longText",
+          "required": true,
+          "defaultValue": "Expert design and development studio creating digital experiences that convert. Specializing in UX design, web applications, and mobile apps.",
+          "helperText": "SEO meta description (150-160 characters recommended). Appears in search results."
+        },
+        {
+          "name": "keywords",
+          "friendlyName": "Focus Keywords",
+          "type": "list",
+          "subFields": [
+            {
+              "name": "keyword",
+              "type": "string"
+            }
+          ],
+          "defaultValue": [
+            { "keyword": "web design" },
+            { "keyword": "UX design" },
+            { "keyword": "digital agency" },
+            { "keyword": "web development" }
+          ],
+          "helperText": "Target keywords for SEO (3-5 recommended)"
+        },
+        {
+          "name": "canonicalUrl",
+          "friendlyName": "Canonical URL",
+          "type": "url",
+          "helperText": "Canonical URL to prevent duplicate content issues. Leave blank to use current page URL."
+        },
+        {
+          "name": "robots",
+          "friendlyName": "Robots Directive",
+          "type": "string",
+          "enum": ["index,follow", "noindex,follow", "index,nofollow", "noindex,nofollow"],
+          "defaultValue": "index,follow",
+          "helperText": "Instructions for search engine crawlers"
+        }
+      ],
+      "defaultValue": {
+        "metaTitle": "The Fold Studio - Digital Experiences That Convert",
+        "metaDescription": "Expert design and development studio creating digital experiences that convert. Specializing in UX design, web applications, and mobile apps.",
+        "keywords": [
+          { "keyword": "web design" },
+          { "keyword": "UX design" }
+        ],
+        "robots": "index,follow"
+      }
+    },
+    {
+      "name": "openGraph",
+      "friendlyName": "Social Media (Open Graph)",
+      "type": "object",
+      "subFields": [
+        {
+          "name": "title",
+          "friendlyName": "OG Title",
+          "type": "string",
+          "helperText": "Title for social media sharing (Facebook, LinkedIn). Leave blank to use meta title."
+        },
+        {
+          "name": "description",
+          "friendlyName": "OG Description", 
+          "type": "longText",
+          "helperText": "Description for social media sharing. Leave blank to use meta description."
+        },
+        {
+          "name": "image",
+          "friendlyName": "OG Image",
+          "type": "file",
+          "allowedFileTypes": ["jpeg", "jpg", "png", "webp"],
+          "helperText": "Image for social media sharing (1200x630px recommended)"
+        },
+        {
+          "name": "imageAlt",
+          "friendlyName": "OG Image Alt Text",
+          "type": "string",
+          "helperText": "Alt text for the OG image"
+        },
+        {
+          "name": "type",
+          "friendlyName": "OG Type",
+          "type": "string",
+          "enum": ["website", "article", "product"],
+          "defaultValue": "website",
+          "helperText": "Type of content for social media"
+        }
+      ]
+    },
+    {
+      "name": "twitter",
+      "friendlyName": "Twitter Settings",
+      "type": "object",
+      "subFields": [
+        {
+          "name": "card",
+          "friendlyName": "Twitter Card Type",
+          "type": "string",
+          "enum": ["summary", "summary_large_image", "app", "player"],
+          "defaultValue": "summary_large_image",
+          "helperText": "Twitter card format"
+        },
+        {
+          "name": "title",
+          "friendlyName": "Twitter Title",
+          "type": "string",
+          "helperText": "Title for Twitter sharing. Leave blank to use OG title or meta title."
+        },
+        {
+          "name": "description",
+          "friendlyName": "Twitter Description",
+          "type": "longText",
+          "helperText": "Description for Twitter sharing. Leave blank to use OG description."
+        },
+        {
+          "name": "image",
+          "friendlyName": "Twitter Image",
+          "type": "file",
+          "allowedFileTypes": ["jpeg", "jpg", "png", "webp"],
+          "helperText": "Image for Twitter sharing (1200x600px recommended)"
+        },
+        {
+          "name": "site",
+          "friendlyName": "Twitter Site",
+          "type": "string",
+          "defaultValue": "@thefoldstudio",
+          "helperText": "Twitter username of the site (with @)"
+        },
+        {
+          "name": "creator",
+          "friendlyName": "Twitter Creator",
+          "type": "string",
+          "helperText": "Twitter username of content creator (with @)"
+        }
+      ]
+    },
+    {
+      "name": "jsonLd",
+      "friendlyName": "Structured Data (JSON-LD)",
+      "type": "object",
+      "subFields": [
+        {
+          "name": "type",
+          "friendlyName": "Schema Type",
+          "type": "string",
+          "enum": ["WebPage", "Article", "Organization", "LocalBusiness", "Product", "Service"],
+          "defaultValue": "WebPage",
+          "helperText": "Schema.org type for structured data"
+        },
+        {
+          "name": "organization",
+          "friendlyName": "Organization Details",
+          "type": "object",
+          "subFields": [
+            {
+              "name": "name",
+              "friendlyName": "Business Name",
+              "type": "string",
+              "defaultValue": "The Fold Studio"
+            },
+            {
+              "name": "url",
+              "friendlyName": "Website URL",
+              "type": "url",
+              "defaultValue": "https://thefoldstudio.com"
+            },
+            {
+              "name": "logo",
+              "friendlyName": "Logo URL",
+              "type": "file",
+              "allowedFileTypes": ["png", "jpg", "svg"]
+            },
+            {
+              "name": "contactPoint",
+              "friendlyName": "Contact Information",
+              "type": "object",
+              "subFields": [
+                {
+                  "name": "telephone",
+                  "friendlyName": "Phone Number",
+                  "type": "string"
+                },
+                {
+                  "name": "email",
+                  "friendlyName": "Email Address",
+                  "type": "string"
+                },
+                {
+                  "name": "contactType",
+                  "friendlyName": "Contact Type",
+                  "type": "string",
+                  "defaultValue": "customer service"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "additionalSchemas",
+          "friendlyName": "Additional Schemas",
+          "type": "list",
+          "subFields": [
+            {
+              "name": "schema",
+              "type": "longText",
+              "helperText": "Additional JSON-LD schema markup"
+            }
+          ],
+          "helperText": "Add custom schema markup for specific needs"
+        }
+      ]
+    },
+    {
+      "name": "sections",
+      "friendlyName": "Page Sections",
+      "type": "blocks",
+      "defaultValue": [
+        {
+          "@type": "@builder.io/sdk:Element",
+          "component": {
+            "name": "HeroSection",
+            "options": {
+              "contentId": "hero-content-1"
+            }
+          }
+        },
+        {
+          "@type": "@builder.io/sdk:Element", 
+          "component": {
+            "name": "ServicesSection",
+            "options": {
+              "contentId": "services-content-1"
+            }
+          }
+        },
+        {
+          "@type": "@builder.io/sdk:Element",
+          "component": {
+            "name": "BenefitsSection", 
+            "options": {
+              "contentId": "benefits-content-1"
+            }
+          }
+        },
+        {
+          "@type": "@builder.io/sdk:Element",
+          "component": {
+            "name": "TestimonialsSection",
+            "options": {
+              "contentId": "testimonials-content-1"
+            }
+          }
+        }
+      ],
+      "helperText": "Drag and drop sections to reorder them. Add or remove sections as needed."
+    }
+  ]
+}

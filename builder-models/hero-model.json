@@ -1,0 +1,90 @@
+{
+  "name": "hero-section",
+  "kind": "data",
+  "inputs": [
+    {
+      "name": "title",
+      "friendlyName": "Hero Title",
+      "type": "string",
+      "required": true,
+      "defaultValue": "We Build Digital Experiences That Convert",
+      "helperText": "Main headline that appears in the hero section"
+    },
+    {
+      "name": "subtitle",
+      "friendlyName": "Hero Subtitle",
+      "type": "longText",
+      "required": true,
+      "defaultValue": "Transform your business with cutting-edge design and development",
+      "helperText": "Descriptive text that appears below the main title"
+    },
+    {
+      "name": "videoSrc",
+      "friendlyName": "Background Video URL",
+      "type": "file",
+      "allowedFileTypes": ["mp4", "webm", "ogg"],
+      "helperText": "Optional background video for the hero section"
+    },
+    {
+      "name": "backgroundImage",
+      "friendlyName": "Background Image",
+      "type": "file",
+      "allowedFileTypes": ["jpeg", "jpg", "png", "svg", "webp"],
+      "helperText": "Background image (fallback if no video)"
+    },
+    {
+      "name": "primaryButton",
+      "friendlyName": "Primary Button",
+      "type": "object",
+      "subFields": [
+        {
+          "name": "text",
+          "friendlyName": "Button Text",
+          "type": "string",
+          "required": true,
+          "defaultValue": "Get Started"
+        },
+        {
+          "name": "href",
+          "friendlyName": "Button Link",
+          "type": "url",
+          "helperText": "Where the button should link to"
+        },
+        {
+          "name": "variant",
+          "friendlyName": "Button Style",
+          "type": "string",
+          "enum": ["primary", "secondary", "outline"],
+          "defaultValue": "primary"
+        }
+      ]
+    },
+    {
+      "name": "secondaryButton",
+      "friendlyName": "Secondary Button",
+      "type": "object",
+      "subFields": [
+        {
+          "name": "text",
+          "friendlyName": "Button Text",
+          "type": "string",
+          "defaultValue": "Learn More"
+        },
+        {
+          "name": "href",
+          "friendlyName": "Button Link",
+          "type": "url",
+          "helperText": "Where the button should link to"
+        },
+        {
+          "name": "variant",
+          "friendlyName": "Button Style",
+          "type": "string",
+          "enum": ["primary", "secondary", "outline"],
+          "defaultValue": "secondary"
+        }
+      ],
+      "helperText": "Optional secondary call-to-action button"
+    }
+  ]
+}

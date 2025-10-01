@@ -1,0 +1,79 @@
+{
+  "name": "benefits-section",
+  "kind": "data",
+  "inputs": [
+    {
+      "name": "eyebrowText",
+      "friendlyName": "Eyebrow Text",
+      "type": "string",
+      "required": true,
+      "defaultValue": "Why Now?",
+      "helperText": "Small text that appears above the main title"
+    },
+    {
+      "name": "title",
+      "friendlyName": "Section Title",
+      "type": "string",
+      "required": true,
+      "defaultValue": "The AI advantage: stand out in a new marketplace",
+      "helperText": "Main heading for the benefits section"
+    },
+    {
+      "name": "paragraphs",
+      "friendlyName": "Description Paragraphs",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "paragraph",
+          "type": "longText",
+          "defaultValue": ""
+        }
+      ],
+      "defaultValue": [
+        {
+          "paragraph": "AI and automation are transforming every industry and early adopters are already reaping the rewards."
+        },
+        {
+          "paragraph": "Don't let outdated processes slow you down. Free your team to focus on what matters most."
+        }
+      ],
+      "helperText": "Descriptive text that appears below the title"
+    },
+    {
+      "name": "benefits",
+      "friendlyName": "Benefits",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "title",
+          "friendlyName": "Benefit Title",
+          "type": "string",
+          "required": true,
+          "helperText": "Short title for this benefit"
+        },
+        {
+          "name": "description",
+          "friendlyName": "Benefit Description",
+          "type": "longText",
+          "required": true,
+          "helperText": "Description of the benefit (supports \\n for line breaks)"
+        },
+        {
+          "name": "icon",
+          "friendlyName": "Icon Name",
+          "type": "string",
+          "required": true,
+          "enum": ["Lightning", "ChartPie", "ShareNetwork", "Robot"],
+          "helperText": "Choose an icon for this benefit"
+        }
+      ],
+      "defaultValue": [
+        {
+          "title": "Automate",
+          "description": "Automate manual, error-prone processes",
+          "icon": "Lightning"
+        }
+      ]
+    }
+  ]
+}

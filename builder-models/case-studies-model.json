@@ -1,0 +1,98 @@
+{
+  "name": "case-studies-section",
+  "kind": "data",
+  "inputs": [
+    {
+      "name": "eyebrowText",
+      "friendlyName": "Eyebrow Text",
+      "type": "string",
+      "required": true,
+      "defaultValue": "Our Work",
+      "helperText": "Small text that appears above the main title"
+    },
+    {
+      "name": "title",
+      "friendlyName": "Section Title",
+      "type": "string",
+      "required": true,
+      "defaultValue": "Case Studies",
+      "helperText": "Main heading for the case studies section"
+    },
+    {
+      "name": "paragraphs",
+      "friendlyName": "Description Paragraphs",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "paragraph",
+          "type": "longText",
+          "defaultValue": ""
+        }
+      ],
+      "defaultValue": [
+        {
+          "paragraph": "Discover how we've helped businesses transform their digital presence"
+        }
+      ],
+      "helperText": "Descriptive text that appears below the title"
+    },
+    {
+      "name": "studies",
+      "friendlyName": "Case Studies",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "title",
+          "friendlyName": "Project Title",
+          "type": "string",
+          "required": true,
+          "helperText": "Name of the project or client"
+        },
+        {
+          "name": "description",
+          "friendlyName": "Project Description",
+          "type": "longText",
+          "required": true,
+          "helperText": "Brief description of the project"
+        },
+        {
+          "name": "image",
+          "friendlyName": "Project Image",
+          "type": "file",
+          "allowedFileTypes": ["jpeg", "jpg", "png", "webp"],
+          "required": true,
+          "helperText": "Hero image for the case study"
+        },
+        {
+          "name": "tags",
+          "friendlyName": "Project Tags",
+          "type": "list",
+          "subFields": [
+            {
+              "name": "tag",
+              "type": "string"
+            }
+          ],
+          "helperText": "Tags that describe the project (e.g., Web Design, UX/UI, Development)"
+        },
+        {
+          "name": "link",
+          "friendlyName": "Case Study Link",
+          "type": "url",
+          "helperText": "Link to the full case study page"
+        }
+      ],
+      "defaultValue": [
+        {
+          "title": "E-commerce Platform Redesign",
+          "description": "Complete redesign and development of a modern e-commerce platform",
+          "tags": [
+            { "tag": "Web Design" },
+            { "tag": "Development" },
+            { "tag": "UX/UI" }
+          ]
+        }
+      ]
+    }
+  ]
+}

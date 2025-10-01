@@ -1,0 +1,75 @@
+{
+  "name": "testimonials-section",
+  "kind": "data",
+  "inputs": [
+    {
+      "name": "eyebrowText",
+      "friendlyName": "Eyebrow Text",
+      "type": "string",
+      "required": true,
+      "defaultValue": "CLIENT TESTIMONIALS",
+      "helperText": "Small text that appears above the main title"
+    },
+    {
+      "name": "title",
+      "friendlyName": "Section Title",
+      "type": "string",
+      "required": true,
+      "defaultValue": "What Our Clients Say",
+      "helperText": "Main heading for the testimonials section"
+    },
+    {
+      "name": "paragraphs",
+      "friendlyName": "Description Paragraphs",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "paragraph",
+          "type": "longText",
+          "defaultValue": ""
+        }
+      ],
+      "defaultValue": [
+        {
+          "paragraph": "Real feedback from the businesses we've helped grow and transform"
+        }
+      ],
+      "helperText": "Descriptive text that appears below the title"
+    },
+    {
+      "name": "testimonials",
+      "friendlyName": "Testimonials",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "name",
+          "friendlyName": "Client Name",
+          "type": "string",
+          "required": true,
+          "helperText": "Full name of the person giving the testimonial"
+        },
+        {
+          "name": "title",
+          "friendlyName": "Client Title",
+          "type": "string",
+          "required": true,
+          "helperText": "Job title and company of the person"
+        },
+        {
+          "name": "quote",
+          "friendlyName": "Testimonial Quote",
+          "type": "longText",
+          "required": true,
+          "helperText": "The actual testimonial text"
+        }
+      ],
+      "defaultValue": [
+        {
+          "name": "Ryan Shelby",
+          "title": "CEO & Founder at RespSafety",
+          "quote": "We've partnered with The Fold Studio for over a year, and they've been an integral part of our team. Their expertise in design and user experience optimization has significantly enhanced our site's flow, leading to a huge increase in user engagement."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "name": "faq-section",
+  "kind": "data",
+  "inputs": [
+    {
+      "name": "eyebrowText",
+      "friendlyName": "Eyebrow Text",
+      "type": "string",
+      "required": true,
+      "defaultValue": "FAQ",
+      "helperText": "Small text that appears above the main title"
+    },
+    {
+      "name": "title",
+      "friendlyName": "Section Title",
+      "type": "string",
+      "required": true,
+      "defaultValue": "Frequently Asked Questions",
+      "helperText": "Main heading for the FAQ section"
+    },
+    {
+      "name": "paragraphs",
+      "friendlyName": "Description Paragraphs",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "paragraph",
+          "type": "longText",
+          "defaultValue": ""
+        }
+      ],
+      "defaultValue": [
+        {
+          "paragraph": "Find answers to common questions about our services and process"
+        }
+      ],
+      "helperText": "Descriptive text that appears below the title"
+    },
+    {
+      "name": "faqs",
+      "friendlyName": "FAQ Items",
+      "type": "list",
+      "subFields": [
+        {
+          "name": "question",
+          "friendlyName": "Question",
+          "type": "string",
+          "required": true,
+          "helperText": "The question being asked"
+        },
+        {
+          "name": "answer",
+          "friendlyName": "Answer",
+          "type": "longText",
+          "required": true,
+          "helperText": "The answer to the question"
+        }
+      ],
+      "defaultValue": [
+        {
+          "question": "What is your typical project timeline?",
+          "answer": "Project timelines vary based on scope and complexity, but most projects take 4-12 weeks from start to finish."
+        }
+      ]
+    }
+  ]
+}
