@@ -38,21 +38,15 @@ export default function DentalPitchPage() {
         data={{
           title: "Multi-Location Dental Practice Scaling Consultation",
           subtitle: "Achieve DSO-level efficiency while maintaining independence. Custom AI solutions that deliver 20% growth with 50% fewer new hires.",
-          backgroundType: 'video',
           videoSrc: "/video-background.mp4",
-          overlayOpacity: 0.4,
-          showEyebrow: true,
-          useEyebrowHeader: true,
-          eyebrowText: "20-MINUTE STRATEGY SESSION",
-          disableAnimations: true,
-          titleItalicsRanges: [],
-          titleLineBreaks: [],
           primaryButton: {
-            text: '',
+            text: 'Schedule a Call',
             variant: 'primary',
             size: 'md'
           },
-          showSecondaryButton: false
+          charOverrides: [],
+          lineBreaks: [],
+          subtitleLineBreaks: []
         }}
       />
 
