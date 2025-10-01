@@ -39,7 +39,7 @@ export default function PitchSection({
             <SectionHeader
               eyebrowText={eyebrowText}
               title={title}
-              paragraphs={subtitle ? [subtitle] : undefined}
+              paragraphs={subtitle ? [subtitle] : []}
               alignment={alignment}
               maxWidth="max-w-[800px]"
             />
