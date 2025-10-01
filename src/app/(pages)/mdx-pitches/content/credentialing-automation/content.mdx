@@ -1,0 +1,74 @@
+## Option 1: Email-to-PDF Workflow
+
+Forward payer credentialing emails to your dedicated address and receive pre-filled PDFs ready for review in minutes. Our AI-powered system uses OpenAI to identify providers and AWS Textract to analyze form fields, then automatically pulls data from your Google Sheets and encrypted storage to generate editable PDFs. Provider data is managed through a comprehensive spreadsheet template with SSNs encrypted using AES-256 on your self-hosted n8n server.
+
+### How It Works
+
+1. **Email arrives** — Forward credentialing form to dedicated address and reference providers required for form → workflow auto-triggers
+2. **AI processes form** — Identifies providers, analyzes fields, pulls data, fills PDF
+3. **Review & approve** — Receive pre-filled PDF → quick review → reply "APPROVED"
+4. **Edit if Needed** - Edit PDF manually and return for flattening
+5. **Receive finalized PDF** and forward to credentialing partners
+
+### Ongoing Changes to Provider Details
+
+Complete through Google Sheets/Excel and when needed, via developer support to edit encrypted SSN's and other sensitive PII.
+
+### Security
+
+- AES-256 encrypted SSN storage on self-hosted n8n
+- TLS email encryption
+- Auto-deletion of PDFs after 48 hours
+- Complete audit trail
+
+### Ongoing Costs:
+
+**$75/month** includes hosting, AI token usage and PDF processing fees
+
+---
+
+## Option 2: Full Custom Credentialing Platform
+
+Everything from Option 1 plus a custom web application built with Next.js and Supabase. Features include a clean dashboard for managing all provider details, searchable provider database, provider credential history, and more. Built using modern tech stack with row-level security and encrypted SSN storage in Supabase vault.
+
+### Timeline
+
+6-8 weeks (vs. 4-6 months traditional custom build)
+
+### Investment
+
+**Development:** $10,000 one-time
+
+**Ongoing Costs:** $150-200/month includes:
+- Supabase Pro hosting
+- n8n VPS
+- AI token usage
+
+### Why Choose Option 2
+
+- Far better user experience
+- More secure provider data
+- More flexibility to build additional modules and features over time
+
+---
+
+## Support Options for Bug Fixes and General Maintenance
+
+- **Monthly Retainer** for $250/month w/ priority support
+- **Hourly rate as needed** for $150/Hour 
+- **Includes** security maintenance and bug fixes as they arise
+
+**Response times:**
+- Critical issues: Same business day
+- Standard fixes: 3 business days
+
+---
+
+## Fortnightly Sprints for Continuous Improvement
+
+**Need New Features or Looking For Continuous Growth?** 
+- We'll scope out $3,000 two-week sprints in advance to continuously improve upon the app you own. 
+- Build the automations and software you want and need to run at optimal performance
+- Productize your software and sell it to other practices 
+
+---

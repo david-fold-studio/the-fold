@@ -15,6 +15,9 @@ export interface HeroData {
   backgroundImage?: string
   primaryButton: ButtonData
   secondaryButton?: ButtonData
+  charOverrides?: Array<{ start: number; end: number; style: Record<string, any> }>
+  lineBreaks?: number[]
+  subtitleLineBreaks?: number[]
 }
 
 export interface BenefitItemData {

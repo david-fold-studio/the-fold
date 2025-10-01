@@ -1,0 +1,14 @@
+{
+  "pitches": [
+    {
+      "slug": "credentialing-automation",
+      "title": "Provider Credentialing Automation",
+      "excerpt": "Transform credentialing from hours of manual data entry to minutes of automated processing. Save 27+ hours per month with AI-powered form filling.",
+      "category": "Healthcare",
+      "tags": ["automation", "healthcare", "dental", "credentialing", "AI"],
+      "publishedAt": "2025-10-01",
+      "featured": true,
+      "order": 1
+    }
+  ]
+}

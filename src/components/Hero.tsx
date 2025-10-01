@@ -47,13 +47,11 @@ export default function Hero({ data = heroData }: HeroProps) {
         className={clsx(
           'items-left flex w-full flex-col justify-end',
           'content-stretch gap-2.5',
+          'px-6 md:px-[var(--space-8)] pb-[var(--space-4)]'
         )}
         style={{
           height: '90vh',
           zIndex: 10,
-          paddingLeft: 'var(--space-8)',
-          paddingRight: 'var(--space-8)',
-          paddingBottom: 'var(--space-4)',
         }}
       >
         {/* Heading Section */}
@@ -76,22 +74,16 @@ export default function Hero({ data = heroData }: HeroProps) {
               <SplitText
                 text={data.title}
                 className="h1"
-                delay={20}
+                delay={30}
                 duration={0.7}
                 ease="power2.out"
-                splitType="chars"
+                splitType="words"
                 from={{ opacity: 0, y: 50 }}
                 to={{ opacity: 1, y: 0 }}
                 threshold={0.5}
                 rootMargin="-20px"
-                charOverrides={[
-                  {
-                    start: 14, 
-                    end:26,   
-                    style: { fontStyle: 'italic' }
-                  },
-                ]}
-                lineBreaks={[26]} // Add line break before "now" (character index 26)
+                charOverrides={data.charOverrides || []}
+                lineBreaks={data.lineBreaks || []}
               />
             </div>
           </div>
@@ -108,15 +100,15 @@ export default function Hero({ data = heroData }: HeroProps) {
               <SplitText
                 text={data.subtitle}
                 className="body-md"
-                delay={20}
+                delay={30}
                 duration={0.9}
                 ease="power2.out"
-                splitType="chars"
+                splitType="words"
                 from={{ opacity: 0, y: 50 }}
                 to={{ opacity: 1, y: 0 }}
                 threshold={0.1}
                 rootMargin="-80px"
-                lineBreaks={[85]} // Break before "than" to prevent word splitting
+                lineBreaks={data.subtitleLineBreaks || []}
               />
             </div>
           </div>
@@ -140,8 +132,18 @@ export default function Hero({ data = heroData }: HeroProps) {
             threshold={0.5}
             rootMargin="-50px"
           >
-            <Button variant={data.primaryButton.variant || 'primary'} size={data.primaryButton.size || 'md'}>
-              {data.primaryButton.text}
+            <Button
+              variant={data.primaryButton.variant || 'primary'}
+              size={data.primaryButton.size || 'md'}
+              asChild={!!data.primaryButton.href}
+            >
+              {data.primaryButton.href ? (
+                <a href={data.primaryButton.href}>
+                  {data.primaryButton.text}
+                </a>
+              ) : (
+                data.primaryButton.text
+              )}
             </Button>
           </AnimatedElement>
 
@@ -159,9 +161,19 @@ export default function Hero({ data = heroData }: HeroProps) {
             <Button
               variant={data.secondaryButton.variant || 'secondary'}
               size={data.secondaryButton.size || 'md'}
-              onClick={data.secondaryButton.onClick || (data.secondaryButton?.href ? () => window.open(data.secondaryButton!.href, '_blank') : undefined)}
+              asChild={!!data.secondaryButton.href}
             >
-              {data.secondaryButton.text}
+              {data.secondaryButton.href ? (
+                <a href={data.secondaryButton.href}>
+                  {data.secondaryButton.text}
+                </a>
+              ) : data.secondaryButton.onClick ? (
+                <button onClick={data.secondaryButton.onClick}>
+                  {data.secondaryButton.text}
+                </button>
+              ) : (
+                data.secondaryButton.text
+              )}
             </Button>
           )}
           </AnimatedElement>
