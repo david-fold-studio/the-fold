@@ -6,6 +6,7 @@ import AnimatedElement from './AnimatedElement'
 import { Button } from './ui/button'
 import type { HeroData } from '@/lib/data/types'
 import { heroData } from '@/app/(pages)/homepage/hero/data'
+import * as LucideIcons from 'lucide-react'
 
 interface HeroProps {
   data?: HeroData
@@ -136,13 +137,32 @@ export default function Hero({ data = heroData }: HeroProps) {
               variant={data.primaryButton.variant || 'primary'}
               size={data.primaryButton.size || 'md'}
               asChild={!!data.primaryButton.href}
+              className={data.primaryButton.icon && data.primaryButton.iconPosition === 'right' ? '!pr-3 !pl-4' : data.primaryButton.icon && data.primaryButton.iconPosition === 'left' ? '!pl-3 !pr-4' : ''}
             >
               {data.primaryButton.href ? (
-                <a href={data.primaryButton.href}>
+                <a href={data.primaryButton.href} className="flex items-center gap-2">
+                  {data.primaryButton.icon && data.primaryButton.iconPosition === 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.primaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
                   {data.primaryButton.text}
+                  {data.primaryButton.icon && data.primaryButton.iconPosition !== 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.primaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
                 </a>
               ) : (
-                data.primaryButton.text
+                <span className="flex items-center gap-2">
+                  {data.primaryButton.icon && data.primaryButton.iconPosition === 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.primaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
+                  {data.primaryButton.text}
+                  {data.primaryButton.icon && data.primaryButton.iconPosition !== 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.primaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
+                </span>
               )}
             </Button>
           </AnimatedElement>
@@ -162,17 +182,44 @@ export default function Hero({ data = heroData }: HeroProps) {
               variant={data.secondaryButton.variant || 'secondary'}
               size={data.secondaryButton.size || 'md'}
               asChild={!!data.secondaryButton.href}
+              className={data.secondaryButton.icon && data.secondaryButton.iconPosition === 'right' ? '!pr-3 !pl-4' : data.secondaryButton.icon && data.secondaryButton.iconPosition === 'left' ? '!pl-3 !pr-4' : ''}
             >
               {data.secondaryButton.href ? (
-                <a href={data.secondaryButton.href}>
+                <a href={data.secondaryButton.href} className="flex items-center gap-2">
+                  {data.secondaryButton.icon && data.secondaryButton.iconPosition === 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.secondaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
                   {data.secondaryButton.text}
+                  {data.secondaryButton.icon && data.secondaryButton.iconPosition !== 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.secondaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
                 </a>
               ) : data.secondaryButton.onClick ? (
-                <button onClick={data.secondaryButton.onClick}>
+                <button onClick={data.secondaryButton.onClick} className="flex items-center gap-2">
+                  {data.secondaryButton.icon && data.secondaryButton.iconPosition === 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.secondaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
                   {data.secondaryButton.text}
+                  {data.secondaryButton.icon && data.secondaryButton.iconPosition !== 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.secondaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
                 </button>
               ) : (
-                data.secondaryButton.text
+                <span className="flex items-center gap-2">
+                  {data.secondaryButton.icon && data.secondaryButton.iconPosition === 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.secondaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
+                  {data.secondaryButton.text}
+                  {data.secondaryButton.icon && data.secondaryButton.iconPosition !== 'left' && (() => {
+                    const IconComponent = (LucideIcons as any)[data.secondaryButton.icon]
+                    return IconComponent ? <IconComponent size={18} /> : null
+                  })()}
+                </span>
               )}
             </Button>
           )}

@@ -9,7 +9,7 @@ interface BenefitsProps {
 
 export default function Benefits({ data = benefitsData }: BenefitsProps) {
   return (
-    <section className="w-full py-20">
+    <section id="benefits" className="w-full py-20">
       <div className="mx-auto max-w-[1216px] px-6">
         <div className="flex gap-20 max-lg:flex-col max-lg:gap-12">
           {/* Left Column - Header Content */}

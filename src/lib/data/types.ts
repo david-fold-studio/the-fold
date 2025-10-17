@@ -6,6 +6,8 @@ export interface ButtonData {
   size?: 'sm' | 'md' | 'lg'
   onClick?: () => void
   href?: string
+  icon?: string
+  iconPosition?: 'left' | 'right'
 }
 
 export interface HeroData {
