@@ -13,6 +13,7 @@ import FAQ from '@/components/FAQ'
 import Articles from '@/components/Articles'
 import Footer from '@/components/Footer'
 import Navigation from '@/components/Navigation'
+import NavigationMinimal from '@/components/NavigationMinimal'
 import PitchPricing from '@/components/pitch/PitchPricing'
 import PitchSection from '@/components/pitch/PitchSection'
 import TeamCard from '@/components/TeamCard'
@@ -292,6 +293,45 @@ Builder.registerComponent(Footer, {
 
 Builder.registerComponent(Navigation, {
   name: 'Navigation',
+})
+
+Builder.registerComponent(NavigationMinimal, {
+  name: 'Navigation Minimal',
+  description: 'Minimal top navigation with logo and configurable CTA button',
+  inputs: [
+    {
+      name: 'logoUrl',
+      type: 'file',
+      allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg', 'webp'],
+      defaultValue: '/logo-full.svg',
+      helperText: 'Logo image URL'
+    },
+    {
+      name: 'logoAlt',
+      type: 'string',
+      defaultValue: 'The Fold',
+      helperText: 'Logo alt text for accessibility'
+    },
+    {
+      name: 'buttonText',
+      type: 'string',
+      defaultValue: 'Get Started',
+      helperText: 'Text for the CTA button'
+    },
+    {
+      name: 'buttonUrl',
+      type: 'string',
+      defaultValue: 'mailto:david@thefold.studio',
+      helperText: 'URL or mailto link for the button'
+    },
+    {
+      name: 'buttonVariant',
+      type: 'string',
+      enum: ['primary', 'secondary', 'outline'],
+      defaultValue: 'primary',
+      helperText: 'Button style variant'
+    }
+  ],
 })
 
 // Register Pitch Components
