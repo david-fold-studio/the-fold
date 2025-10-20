@@ -1,4 +1,4 @@
-import { Zap, BarChart3, GitMerge, Bot } from 'lucide-react'
+import { Zap, BarChart3, GitMerge, Bot, HandHeart, BookOpen, Gem, IterationCw } from 'lucide-react'
 
 interface BenefitItemProps {
   title: string
@@ -10,7 +10,11 @@ const iconMap = {
   Lightning: Zap,
   ChartPie: BarChart3,
   ShareNetwork: GitMerge,
-  Robot: Bot
+  Robot: Bot,
+  HandHeart: HandHeart,
+  BookOpen: BookOpen,
+  Gem: Gem,
+  IterationCw: IterationCw
 }
 
 export default function BenefitItem({ title, description, icon }: BenefitItemProps) {

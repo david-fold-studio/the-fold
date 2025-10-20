@@ -1,5 +1,7 @@
 'use client'
 
+import SectionHeader from '@/components/SectionHeader'
+
 interface PricingOption {
   badge: string
   title: string
@@ -11,27 +13,47 @@ interface PricingOption {
 }
 
 interface PitchPricingProps {
+  eyebrowText?: string
+  sectionTitle?: string
+  sectionParagraphs?: string[]
   options: PricingOption[]
   previewImage?: string
+  columns?: 2 | 3
+  hidePreview?: boolean
 }
 
-export default function PitchPricing({ options, previewImage }: PitchPricingProps) {
+export default function PitchPricing({ eyebrowText, sectionTitle, sectionParagraphs, options, previewImage, columns = 2, hidePreview = false }: PitchPricingProps) {
   return (
-    <div className="mx-auto max-w-[720px] px-6">
+    <div className={columns === 3 ? 'mx-auto max-w-[1200px] px-6' : 'mx-auto max-w-[720px] px-6'}>
+      {/* Section Header */}
+      {sectionTitle && (
+        <div className="mb-12">
+          <SectionHeader
+            eyebrowText={eyebrowText}
+            title={sectionTitle}
+            paragraphs={sectionParagraphs || []}
+            alignment="center"
+            maxWidth="max-w-3xl"
+          />
+        </div>
+      )}
+
       <div className="bg-[#0d0d0d] rounded-2xl border border-white/5 p-2 flex flex-col gap-3">
         {/* Visual Preview */}
-        <div className="w-full overflow-hidden rounded-xl border border-white/5 bg-gradient-to-b from-black/20 to-black/10 flex items-center justify-center min-h-[200px]">
-          {previewImage ? (
-            <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
-          ) : (
-            <div className="text-center p-8">
-              <p className="body-sm opacity-30">Visual Preview</p>
-            </div>
-          )}
-        </div>
+        {!hidePreview && (
+          <div className="w-full overflow-hidden rounded-xl border border-white/5 bg-gradient-to-b from-black/20 to-black/10 flex items-center justify-center min-h-[200px]">
+            {previewImage ? (
+              <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
+            ) : (
+              <div className="text-center p-8">
+                <p className="body-sm opacity-30">Visual Preview</p>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Pricing Options Grid */}
-        <div className="grid md:grid-cols-2 gap-3">
+        <div className={columns === 3 ? 'grid md:grid-cols-3 gap-3 min-w-[880px]' : 'grid md:grid-cols-2 gap-3'}>
           {options.map((option, index) => (
             <div key={index} className="bg-[#0d0d0d] rounded-lg p-3 flex flex-col gap-6">
               {/* Info Stack */}

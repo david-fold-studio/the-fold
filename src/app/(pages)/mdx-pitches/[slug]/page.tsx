@@ -1,53 +1,24 @@
 import NavigationMinimal from '@/components/NavigationMinimal'
 import { getPitchBySlug, getAllPitches } from '@/lib/utils/pitches'
 import { notFound } from 'next/navigation'
-import { marked } from 'marked'
 import type { Metadata } from 'next'
 import PitchPricing from '@/components/pitch/PitchPricing'
 import SectionHeader from '@/components/SectionHeader'
 import Hero from '@/components/Hero'
 import ROICalculator from '@/components/pitch/ROICalculator'
 import PitchCTA from '@/components/pitch/PitchCTA'
+import { compileMDX } from '@/lib/utils/mdx'
 
-// Configure marked to handle relative image paths
-async function processContent(content: string, slug: string): Promise<string> {
+// Process MDX content with inline React components
+async function processContent(content: string, slug: string) {
   // Replace relative image paths with absolute paths to public directory
   const processedContent = content.replace(
     /!\[([^\]]*)\]\(\.\/assets\/([^)]+)\)/g,
     `![$1](/images/pitches/${slug}/$2)`
   )
 
-  // Configure marked with custom renderer for images and headings
-  const renderer = new marked.Renderer()
-
-  // Custom image renderer
-  renderer.image = function(token) {
-    const imageUrl = token.href
-    const imageTitle = token.title
-    const imageText = token.text
-
-    return `
-      <figure class="article-image">
-        <img src="${imageUrl}" alt="${imageText || ''}" title="${imageTitle || ''}" />
-        ${imageText ? `<figcaption>${imageText}</figcaption>` : ''}
-      </figure>
-    `
-  }
-
-  // Custom heading renderers to apply design system classes
-  renderer.heading = function(token) {
-    const level = token.depth
-    const text = token.text
-    const className = level <= 3 ? `h${level}` : ''
-
-    return `<h${level} class="${className}">${text}</h${level}>`
-  }
-
-  return await marked(processedContent, {
-    renderer,
-    breaks: false,
-    gfm: true
-  })
+  // Compile MDX to React components
+  return await compileMDX(processedContent)
 }
 
 interface PageProps {
@@ -211,11 +182,8 @@ export default async function PitchPage({ params }: PageProps) {
 
           {/* Content Section */}
           <section className="pb-20">
-            <div className="mx-auto max-w-[800px] px-6">
-              <div
-                className="article-body"
-                dangerouslySetInnerHTML={{ __html: processedContent }}
-              />
+            <div className="article-body">
+              {processedContent}
             </div>
           </section>
 

@@ -13,6 +13,15 @@ import FAQ from '@/components/FAQ'
 import Articles from '@/components/Articles'
 import Footer from '@/components/Footer'
 import Navigation from '@/components/Navigation'
+import PitchPricing from '@/components/pitch/PitchPricing'
+import PitchSection from '@/components/pitch/PitchSection'
+import TeamCard from '@/components/TeamCard'
+import TimelineRail from '@/components/ui/timeline-rail'
+import DevelopmentProcessComparison from '@/components/pitch/DevelopmentProcessComparison'
+import TeamSection from '@/components/pitch/TeamSection'
+import Markdown from '@/components/Markdown'
+import PitchCTA from '@/components/pitch/PitchCTA'
+import PitchTestimonials from '@/components/pitch/PitchTestimonials'
 
 // Register components with Builder.io
 Builder.registerComponent(Hero, {
@@ -35,15 +44,88 @@ Builder.registerComponent(Benefits, {
   name: 'Benefits',
   inputs: [
     {
-      name: 'title',
-      type: 'string',
-      defaultValue: 'The AI Advantage - Stand Out in a New Marketplace',
-    },
-    {
-      name: 'badge',
-      type: 'string',
-      defaultValue: 'WHY NOW?',
-    },
+      name: 'data',
+      type: 'object',
+      defaultValue: {
+        eyebrowText: 'WHY US?',
+        title: 'You\'ll love working with the Fold.',
+        paragraphs: ['We balance the empathy-driven approach of experience design with the economical savings afforded by cutting-edge AI engineering technologies.'],
+        benefits: [
+          {
+            title: 'Custom Solutions',
+            description: 'Custom solutions built specifically for your needs',
+            icon: 'HandHeart'
+          },
+          {
+            title: 'Transparent Pricing',
+            description: 'Pre-scoped estimates with time & materials billing',
+            icon: 'BookOpen'
+          },
+          {
+            title: 'Value-First Delivery',
+            description: 'Sprint-based delivery - lowest hanging fruit first',
+            icon: 'Gem'
+          },
+          {
+            title: 'Flexible Engagement',
+            description: 'You can cancel at any point',
+            icon: 'IterationCw'
+          }
+        ]
+      },
+      subFields: [
+        {
+          name: 'eyebrowText',
+          type: 'string',
+          required: true,
+        },
+        {
+          name: 'title',
+          type: 'string',
+          required: true,
+        },
+        {
+          name: 'paragraphs',
+          type: 'list',
+          defaultValue: ['We balance the empathy-driven approach of experience design with the economical savings afforded by cutting-edge AI engineering technologies.'],
+          subFields: [
+            {
+              name: 'text',
+              type: 'longText',
+            }
+          ]
+        },
+        {
+          name: 'benefits',
+          type: 'list',
+          defaultValue: [
+            {
+              title: 'Custom Solutions',
+              description: 'Custom solutions built specifically for your needs',
+              icon: 'HandHeart'
+            }
+          ],
+          subFields: [
+            {
+              name: 'title',
+              type: 'string',
+              required: true,
+            },
+            {
+              name: 'description',
+              type: 'longText',
+              required: true,
+            },
+            {
+              name: 'icon',
+              type: 'string',
+              enum: ['HandHeart', 'BookOpen', 'Gem', 'IterationCw'],
+              defaultValue: 'HandHeart',
+            }
+          ]
+        }
+      ]
+    }
   ],
 })
 
@@ -61,10 +143,139 @@ Builder.registerComponent(Process, {
 
 Builder.registerComponent(Pricing, {
   name: 'Pricing',
+  description: 'Call-to-action section with customizable title, description, and action buttons',
+  inputs: [
+    {
+      name: 'eyebrowText',
+      type: 'string',
+      defaultValue: 'Get Started',
+      helperText: 'Small text above the title'
+    },
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Ready to Build Something Amazing?',
+      helperText: 'Main heading text'
+    },
+    {
+      name: 'paragraphs',
+      type: 'list',
+      defaultValue: [
+        "Let's discuss your project and see how we can bring your vision to life.",
+        "Everything starts with a quick intro call."
+      ],
+      helperText: 'Description paragraphs'
+    },
+    {
+      name: 'primaryButtonText',
+      type: 'string',
+      defaultValue: 'Schedule a Call',
+      helperText: 'Text for the primary button'
+    },
+    {
+      name: 'primaryButtonUrl',
+      type: 'string',
+      defaultValue: 'https://tidycal.com/daviddejong/the-fold-discovery-mpoxpll',
+      helperText: 'URL for the primary button'
+    },
+    {
+      name: 'secondaryButtonText',
+      type: 'string',
+      defaultValue: 'View Our Work',
+      helperText: 'Text for the secondary button'
+    },
+    {
+      name: 'secondaryButtonUrl',
+      type: 'string',
+      defaultValue: '/case-studies',
+      helperText: 'URL for the secondary button'
+    }
+  ],
 })
 
 Builder.registerComponent(Testimonials, {
   name: 'Testimonials',
+  description: 'Client testimonials section with header and testimonial cards',
+  inputs: [
+    {
+      name: 'data',
+      type: 'object',
+      defaultValue: {
+        eyebrowText: 'CLIENT TESTIMONIALS',
+        title: 'What Our Clients Say',
+        paragraphs: ['Real feedback from the businesses we\'ve helped grow and transform'],
+        testimonials: [
+          {
+            name: 'Ryan Shelby',
+            title: 'CEO & Founder at RespSafety',
+            quote: 'We\'ve partnered with The Fold Studio for over a year, and they\'ve been an integral part of our team. Their expertise in design and user experience optimization has significantly enhanced our site\'s flow, leading to a huge increase in user engagement.',
+          },
+          {
+            name: 'Drew Sherman',
+            title: 'SVP Brand Strategy at RPM',
+            quote: 'David is an instrumental part of my team and has helped bolster our digital strategy. He is not only an incredible UX designer, he is a well-rounded strategist that I lean on constantly for sound advice and the most current trends and best practices.',
+          },
+          {
+            name: 'Chase Binnie',
+            title: 'CEO at RetailWire',
+            quote: 'David showed great understanding and insight into the brand, enhancing it with his thoughtful UX design. His ability to create customized solutions adds significant value to any web project.',
+          },
+        ]
+      },
+      subFields: [
+        {
+          name: 'eyebrowText',
+          type: 'string',
+          required: true,
+          helperText: 'Small text above the title'
+        },
+        {
+          name: 'title',
+          type: 'string',
+          required: true,
+          helperText: 'Main section heading'
+        },
+        {
+          name: 'paragraphs',
+          type: 'list',
+          defaultValue: ['Real feedback from the businesses we\'ve helped grow and transform'],
+          helperText: 'Description paragraphs'
+        },
+        {
+          name: 'testimonials',
+          type: 'list',
+          required: true,
+          defaultValue: [
+            {
+              name: 'Client Name',
+              title: 'Job Title',
+              quote: 'Testimonial quote goes here...'
+            }
+          ],
+          subFields: [
+            {
+              name: 'name',
+              type: 'string',
+              required: true,
+              helperText: 'Client name'
+            },
+            {
+              name: 'title',
+              type: 'string',
+              required: true,
+              helperText: 'Client job title and company'
+            },
+            {
+              name: 'quote',
+              type: 'longText',
+              required: true,
+              helperText: 'Testimonial quote'
+            }
+          ]
+        }
+      ]
+    }
+  ],
 })
 
 Builder.registerComponent(FAQ, {
@@ -81,6 +292,358 @@ Builder.registerComponent(Footer, {
 
 Builder.registerComponent(Navigation, {
   name: 'Navigation',
+})
+
+// Register Pitch Components
+Builder.registerComponent(PitchPricing, {
+  name: 'Pitch Pricing',
+  inputs: [
+    {
+      name: 'eyebrowText',
+      type: 'string',
+      helperText: 'Small text above title (optional)'
+    },
+    {
+      name: 'sectionTitle',
+      type: 'string',
+      helperText: 'Section heading (optional)'
+    },
+    {
+      name: 'sectionParagraphs',
+      type: 'list',
+      helperText: 'Section description paragraphs (optional)',
+      defaultValue: ['Description paragraph goes here']
+    },
+    {
+      name: 'columns',
+      type: 'number',
+      enum: [
+        { label: '2 Columns', value: 2 },
+        { label: '3 Columns', value: 3 }
+      ],
+      defaultValue: 2,
+      helperText: 'Number of columns for pricing options'
+    },
+    {
+      name: 'hidePreview',
+      type: 'boolean',
+      defaultValue: false,
+      helperText: 'Hide the preview image section'
+    },
+    {
+      name: 'previewImage',
+      type: 'file',
+      allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg', 'webp'],
+      helperText: 'Preview image (optional)'
+    },
+    {
+      name: 'options',
+      type: 'list',
+      required: true,
+      defaultValue: [
+        {
+          badge: 'OPTION 1',
+          title: 'Starter',
+          description: 'Perfect for getting started',
+          timeline: '2-4 weeks',
+          price: '$3,000',
+          features: ['Feature 1', 'Feature 2', 'Feature 3']
+        }
+      ],
+      subFields: [
+        {
+          name: 'badge',
+          type: 'string',
+          required: true,
+          defaultValue: 'OPTION 1',
+        },
+        {
+          name: 'title',
+          type: 'string',
+          required: true,
+          defaultValue: 'Starter',
+        },
+        {
+          name: 'description',
+          type: 'text',
+          required: true,
+          defaultValue: 'Perfect for getting started',
+        },
+        {
+          name: 'timeline',
+          type: 'string',
+          defaultValue: '2-4 weeks',
+          helperText: 'Optional timeline (e.g., "2-4 weeks")'
+        },
+        {
+          name: 'price',
+          type: 'string',
+          required: true,
+          defaultValue: '$3,000',
+        },
+        {
+          name: 'features',
+          type: 'list',
+          required: true,
+          defaultValue: ['Feature 1', 'Feature 2', 'Feature 3'],
+          helperText: 'List of features for this pricing option'
+        }
+      ]
+    }
+  ],
+})
+
+Builder.registerComponent(PitchSection, {
+  name: 'Pitch Section',
+  inputs: [
+    {
+      name: 'id',
+      type: 'string',
+      helperText: 'Optional section ID for anchor links'
+    },
+    {
+      name: 'eyebrowText',
+      type: 'string',
+      helperText: 'Small text above title'
+    },
+    {
+      name: 'title',
+      type: 'string',
+      required: true,
+    },
+    {
+      name: 'subtitle',
+      type: 'longText',
+    },
+    {
+      name: 'backgroundColor',
+      type: 'color',
+      defaultValue: 'var(--color-black-solid)',
+    },
+    {
+      name: 'maxWidth',
+      type: 'string',
+      enum: ['max-w-7xl', 'max-w-6xl', 'max-w-5xl', 'max-w-none'],
+      defaultValue: 'max-w-7xl',
+    },
+    {
+      name: 'alignment',
+      type: 'string',
+      enum: ['left', 'center'],
+      defaultValue: 'center',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      helperText: 'Additional CSS classes'
+    }
+  ],
+  canHaveChildren: true,
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: {
+          text: 'Add your content here'
+        }
+      }
+    }
+  ]
+})
+
+Builder.registerComponent(TeamCard, {
+  name: 'Team Card',
+  inputs: [
+    {
+      name: 'name',
+      type: 'string',
+      required: true,
+      defaultValue: 'Team Member'
+    },
+    {
+      name: 'title',
+      type: 'string',
+      required: true,
+      defaultValue: 'Job Title'
+    },
+    {
+      name: 'description',
+      type: 'longText',
+      required: true,
+      defaultValue: 'Brief description of the team member and their expertise.'
+    },
+    {
+      name: 'avatar',
+      type: 'file',
+      allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg', 'webp'],
+      required: true,
+      helperText: 'Team member photo or use "users-icon" for icon'
+    },
+    {
+      name: 'isSpecialCard',
+      type: 'boolean',
+      defaultValue: false,
+      helperText: 'Use special styling (for "+" cards)'
+    }
+  ],
+})
+
+Builder.registerComponent(TimelineRail, {
+  name: 'Timeline Rail',
+  inputs: [
+    {
+      name: 'items',
+      type: 'list',
+      required: true,
+      defaultValue: [
+        {
+          label: 'Step 1',
+          caption: 'Description of step 1',
+        },
+        {
+          label: 'Step 2',
+          caption: 'Description of step 2',
+        }
+      ],
+      subFields: [
+        {
+          name: 'label',
+          type: 'string',
+          required: true,
+        },
+        {
+          name: 'caption',
+          type: 'longText',
+          required: true,
+        },
+        {
+          name: 'dotColor',
+          type: 'color',
+          helperText: 'Custom dot color (optional)'
+        },
+        {
+          name: 'labelColor',
+          type: 'color',
+          helperText: 'Custom label color (optional)'
+        }
+      ]
+    },
+    {
+      name: 'size',
+      type: 'string',
+      enum: ['sm', 'md', 'lg'],
+      defaultValue: 'md',
+    },
+    {
+      name: 'lineThickness',
+      type: 'number',
+      defaultValue: 2,
+      helperText: 'Thickness of connecting line in pixels'
+    },
+    {
+      name: 'lineColorClass',
+      type: 'string',
+      defaultValue: 'bg-zinc-800',
+      helperText: 'Tailwind color class for line'
+    },
+    {
+      name: 'dotClass',
+      type: 'string',
+      defaultValue: 'bg-zinc-600',
+      helperText: 'Tailwind color class for dots'
+    },
+    {
+      name: 'dotActiveClass',
+      type: 'string',
+      defaultValue: 'bg-zinc-100',
+      helperText: 'Tailwind color class for active dots'
+    },
+    {
+      name: 'labelAngle',
+      type: 'number',
+      defaultValue: 0,
+      helperText: 'Angle of labels in degrees'
+    },
+    {
+      name: 'gapClassName',
+      type: 'string',
+      defaultValue: 'justify-between',
+      helperText: 'Tailwind gap class for spacing'
+    }
+  ],
+})
+
+// Register complete pitch sections (drag & drop ready)
+Builder.registerComponent(TeamSection, {
+  name: 'Team Section',
+  description: 'Complete team section with 4 team members pre-configured',
+})
+
+Builder.registerComponent(DevelopmentProcessComparison, {
+  name: 'Development Process Comparison',
+  description: 'Three-way comparison of development approaches with timelines',
+})
+
+Builder.registerComponent(Markdown, {
+  name: 'Markdown',
+  description: 'Render markdown content with a textarea input',
+  inputs: [
+    {
+      name: 'content',
+      type: 'longText',
+      required: true,
+      defaultValue: '# Welcome\n\nStart typing your **markdown** content here.\n\n- List item 1\n- List item 2\n\n[Link example](https://example.com)',
+      helperText: 'Enter markdown content. Supports headings, bold, italic, lists, links, etc.'
+    },
+    {
+      name: 'className',
+      type: 'string',
+      helperText: 'Additional CSS classes'
+    }
+  ],
+})
+
+Builder.registerComponent(PitchCTA, {
+  name: 'Pitch CTA',
+  description: 'Call-to-action section with customizable title, description, and buttons',
+  inputs: [
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Ready to Get Started?',
+    },
+    {
+      name: 'description',
+      type: 'longText',
+      defaultValue: "Let's eliminate credentialing chaos and give you your time back.",
+    },
+    {
+      name: 'primaryButtonText',
+      type: 'string',
+      defaultValue: 'Get Started',
+    },
+    {
+      name: 'primaryButtonUrl',
+      type: 'string',
+      defaultValue: 'mailto:david@thefold.studio',
+    },
+    {
+      name: 'secondaryButtonText',
+      type: 'string',
+      defaultValue: 'Book Review Call',
+    },
+    {
+      name: 'secondaryButtonUrl',
+      type: 'string',
+      defaultValue: 'https://tidycal.com/daviddejong/the-fold-discovery-mpoxpll',
+    },
+  ],
+})
+
+Builder.registerComponent(PitchTestimonials, {
+  name: 'Pitch Testimonials',
+  description: 'Pre-configured testimonials section with 3 client testimonials',
 })
 
 // Register design tokens with Builder.io for VS Code extension
@@ -115,6 +678,7 @@ Builder.register("designTokens.fontSize", [
 
 // Register spacing as design tokens
 Builder.register("designTokens.spacing", [
+  { name: "None", value: "0" },
   { name: "XS", value: "0.5rem" },
   { name: "SM", value: "0.75rem" },
   { name: "Base", value: "1rem" },
@@ -161,6 +725,7 @@ Builder.register("editor.settings", {
       { name: "2XL", value: "var(--font-size-2xl)" },
     ],
     spacing: [
+      { name: "None", value: "0" },
       { name: "XS", value: "0.5rem" },
       { name: "SM", value: "0.75rem" },
       { name: "Base", value: "1rem" },

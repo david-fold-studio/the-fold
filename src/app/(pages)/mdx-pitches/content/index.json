@@ -9,6 +9,16 @@
       "publishedAt": "2025-10-01",
       "featured": true,
       "order": 1
+    },
+    {
+      "slug": "incrementum",
+      "title": "Re-authoring Leadership Coach",
+      "excerpt": "AI-powered coaching platform with tiered investment scenarios. Validate demand with Custom GPT, scale to web and mobile apps progressively.",
+      "category": "AI Coaching",
+      "tags": ["AI", "coaching", "mobile app", "web app", "custom GPT"],
+      "publishedAt": "2025-10-20",
+      "featured": true,
+      "order": 2
     }
   ]
 }

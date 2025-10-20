@@ -99,9 +99,9 @@ export default function TimelineRail({
         aria-hidden
         className={cn('absolute left-0 right-0', railClassName)}
         style={{
-          top: '22%',
+          top: '50%',
           height: lineThickness,
-          transform: `translateY(-40%)`,
+          transform: `translateY(-50%)`,
         }}
       >
         <div className={cn('h-full rounded-full', lineColorClass)} />
