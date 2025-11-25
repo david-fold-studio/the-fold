@@ -9,20 +9,8 @@ export const heroData: HeroData = {
     variant: "primary",
     size: "md"
   },
-  secondaryButton: {
-    text: "Learn More",
-    variant: "secondary",
-    size: "md",
-    href: "#benefits",
-    icon: "ArrowDownCircle",
-    iconPosition: "right"
-  },
   // Line breaks after "you" (word 4)
   lineBreaks: [5],
   // Subtitle line breaks after "needs,"
-  subtitleLineBreaks: [10],
-  // Italic styling for words: "just" (2), "for" (3), "you" (4) and "every" (9), "business" (10)
-  charOverrides: [
-    { start: 2, end: 4, style: { fontStyle: 'italic' } },   // "just for you"
-  ]
+  subtitleLineBreaks: [10]
 }

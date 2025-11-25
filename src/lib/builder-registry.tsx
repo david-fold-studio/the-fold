@@ -1,5 +1,10 @@
 "use client"
-import { Builder } from '@builder.io/react'
+import { Builder, builder } from '@builder.io/react'
+
+// Initialize Builder with API key
+if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_BUILDER_API_KEY) {
+  builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY)
+}
 
 // Import your custom components
 import Hero from '@/components/Hero'
@@ -27,17 +32,131 @@ import PitchTestimonials from '@/components/pitch/PitchTestimonials'
 // Register components with Builder.io
 Builder.registerComponent(Hero, {
   name: 'Hero',
+  description: 'Hero section with video background, title, subtitle, and CTA buttons',
   inputs: [
     {
-      name: 'title',
+      name: 'data.eyebrowText',
+      friendlyName: 'Eyebrow Text',
       type: 'string',
-      defaultValue: 'Software made just for you',
+      helperText: 'Optional eyebrow text above the title'
     },
     {
-      name: 'subtitle',
-      type: 'longText',
-      defaultValue: 'AI-driven solutions tailored to your needs, built faster and cheaper than ever with user experience at the core.',
+      name: 'data.title',
+      friendlyName: 'Title',
+      type: 'string',
+      defaultValue: 'Software made just for you now in reach for every business',
+      helperText: 'Main hero heading (H1)'
     },
+    {
+      name: 'data.subtitle',
+      friendlyName: 'Subtitle',
+      type: 'longText',
+      defaultValue: 'AI-driven custom software solutions and automations tailored to your needs, built faster and cheaper than ever with user experience at the core.',
+      helperText: 'Hero description text'
+    },
+    {
+      name: 'data.videoSrc',
+      friendlyName: 'Video Source',
+      type: 'file',
+      allowedFileTypes: ['mp4', 'webm'],
+      defaultValue: '/video-background.mp4',
+      helperText: 'Background video URL'
+    },
+    {
+      name: 'data.backgroundImage',
+      friendlyName: 'Background Image',
+      type: 'file',
+      allowedFileTypes: ['jpeg', 'jpg', 'png', 'webp'],
+      helperText: 'Fallback background image if no video'
+    },
+    {
+      name: 'data.primaryButton.text',
+      friendlyName: 'Primary Button Text',
+      type: 'string',
+      defaultValue: 'Schedule a Call',
+      helperText: 'Primary button text'
+    },
+    {
+      name: 'data.primaryButton.variant',
+      friendlyName: 'Primary Button Variant',
+      type: 'string',
+      enum: ['primary', 'secondary', 'outline'],
+      defaultValue: 'primary',
+      helperText: 'Primary button style'
+    },
+    {
+      name: 'data.primaryButton.size',
+      friendlyName: 'Primary Button Size',
+      type: 'string',
+      enum: ['sm', 'md', 'lg'],
+      defaultValue: 'md',
+      helperText: 'Primary button size'
+    },
+    {
+      name: 'data.primaryButton.href',
+      friendlyName: 'Primary Button Link',
+      type: 'string',
+      helperText: 'Primary button link URL'
+    },
+    {
+      name: 'data.primaryButton.icon',
+      friendlyName: 'Primary Button Icon',
+      type: 'string',
+      helperText: 'Primary button icon (Lucide icon name, e.g., "ArrowRight")'
+    },
+    {
+      name: 'data.primaryButton.iconPosition',
+      friendlyName: 'Primary Button Icon Position',
+      type: 'string',
+      enum: ['left', 'right'],
+      defaultValue: 'right',
+      helperText: 'Primary button icon position'
+    },
+    {
+      name: 'data.secondaryButton.text',
+      friendlyName: 'Secondary Button Text',
+      type: 'string',
+      defaultValue: 'Learn More',
+      helperText: 'Secondary button text (leave empty to hide)'
+    },
+    {
+      name: 'data.secondaryButton.variant',
+      friendlyName: 'Secondary Button Variant',
+      type: 'string',
+      enum: ['primary', 'secondary', 'outline'],
+      defaultValue: 'secondary',
+      helperText: 'Secondary button style'
+    },
+    {
+      name: 'data.secondaryButton.size',
+      friendlyName: 'Secondary Button Size',
+      type: 'string',
+      enum: ['sm', 'md', 'lg'],
+      defaultValue: 'md',
+      helperText: 'Secondary button size'
+    },
+    {
+      name: 'data.secondaryButton.href',
+      friendlyName: 'Secondary Button Link',
+      type: 'string',
+      defaultValue: '#benefits',
+      helperText: 'Secondary button link URL'
+    },
+    {
+      name: 'data.secondaryButton.icon',
+      friendlyName: 'Secondary Button Icon',
+      type: 'string',
+      defaultValue: 'ArrowDownCircle',
+      helperText: 'Secondary button icon (Lucide icon name)'
+    },
+    {
+      name: 'data.secondaryButton.iconPosition',
+      friendlyName: 'Secondary Button Icon Position',
+      type: 'string',
+      enum: ['left', 'right'],
+      defaultValue: 'right',
+      helperText: 'Secondary button icon position'
+    }
   ],
 })
 

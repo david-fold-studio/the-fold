@@ -11,13 +11,13 @@ export interface ButtonData {
 }
 
 export interface HeroData {
+  eyebrowText?: string
   title: string
   subtitle: string
   videoSrc?: string
   backgroundImage?: string
   primaryButton: ButtonData
   secondaryButton?: ButtonData
-  charOverrides?: Array<{ start: number; end: number; style: Record<string, any> }>
   lineBreaks?: number[]
   subtitleLineBreaks?: number[]
 }
