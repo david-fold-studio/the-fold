@@ -45,7 +45,9 @@
       "2xl": "var(--border-radius-2xl)"
     }
   },
-  "models": ["page"],
+  "models": [
+    "page"
+  ],
   "components": [
     {
       "name": "Hero",
@@ -63,5 +65,8 @@
       "name": "CaseStudies",
       "path": "./src/components/CaseStudies.tsx"
     }
-  ]
+  ],
+  "command": "npm run dev",
+  "serverUrl": "http://localhost:4000",
+  "autoDetectDevServer": false
 }
