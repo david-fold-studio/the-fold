@@ -57,7 +57,6 @@ export default function Home() {
     <BuilderComponent
       model="page"
       content={content}
-      enableEditingUrl={true}
     />
   )
 }

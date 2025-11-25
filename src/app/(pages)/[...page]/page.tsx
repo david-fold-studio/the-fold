@@ -72,7 +72,6 @@ export default function Page({ params }: PageProps) {
     <BuilderComponent
       model="page"
       content={content}
-      enableEditingUrl={true}
     />
   )
 }
