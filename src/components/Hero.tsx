@@ -5,7 +5,6 @@ import SplitText from './SplitText'
 import AnimatedElement from './AnimatedElement'
 import { Button } from './ui/button'
 import type { HeroData } from '@/lib/data/types'
-import { heroData } from '@/app/(pages)/homepage/hero/data'
 import * as LucideIcons from 'lucide-react'
 
 interface HeroProps {
@@ -13,42 +12,102 @@ interface HeroProps {
 }
 
 export default function Hero(props: any) {
-  // Builder passes props with dot notation as flat keys like "data.title"
-  // Reconstruct nested data object, merging with heroData defaults
-  // Check if fields were explicitly set (even to empty string)
-  const hasSubtitle = 'data.subtitle' in props ? props['data.subtitle'] : heroData.subtitle
-  const hasSecondaryButtonText = 'data.secondaryButton.text' in props
-    ? props['data.secondaryButton.text']
-    : heroData.secondaryButton?.text
+  // Builder.io is the ONLY source of truth for ALL pages
+  // No hardcoded defaults - only use what Builder provides
+
+  // Helper to extract line breaks from Builder list format
+  const extractLineBreaks = (lineBreaksData: any): number[] | undefined => {
+    if (!lineBreaksData) return undefined
+
+    // If it's already an array of numbers, return it
+    if (Array.isArray(lineBreaksData)) {
+      if (lineBreaksData.length === 0) return undefined
+
+      // Try to extract values - Builder might use different formats
+      const numbers = lineBreaksData
+        .map((item: any) => {
+          // Direct number
+          if (typeof item === 'number') return item
+          // Object with value property
+          if (item && typeof item === 'object' && typeof item.value === 'number') return item.value
+          // Try parsing as number
+          const num = Number(item)
+          return isNaN(num) ? null : num
+        })
+        .filter((v: any) => v !== null && typeof v === 'number')
+
+      return numbers.length > 0 ? numbers : undefined
+    }
+
+    return undefined
+  }
 
   const mergedData: HeroData = {
     eyebrowText: props['data.eyebrowText'] || undefined,
-    title: props['data.title'] || heroData.title,
-    subtitle: hasSubtitle || '',
-    videoSrc: props['data.videoSrc'] || heroData.videoSrc,
+    title: props['data.title'] || '',
+    subtitle: props['data.subtitle'] || '',
+    videoSrc: props['data.videoSrc'] || '/video-background.mp4',
     backgroundImage: props['data.backgroundImage'] || undefined,
-    lineBreaks: props['data.lineBreaks'] || heroData.lineBreaks || [],
-    subtitleLineBreaks: props['data.subtitleLineBreaks'] || heroData.subtitleLineBreaks || [],
+    // Line breaks: ONLY use what Builder provides, no defaults
+    titleLineBreaks: extractLineBreaks(props['data.titleLineBreaks']),
+    subtitleLineBreaks: extractLineBreaks(props['data.subtitleLineBreaks']),
+    titleMaxWidth: props['data.titleMaxWidth'] || '640px',
+    subtitleMaxWidth: props['data.subtitleMaxWidth'] || '640px',
+    // Italics: ONLY use what Builder provides, no defaults
+    italicsStart: props['data.italicsStart'],
+    italicsEnd: props['data.italicsEnd'],
     primaryButton: {
-      text: props['data.primaryButton.text'] || heroData.primaryButton.text,
-      variant: props['data.primaryButton.variant'] || heroData.primaryButton.variant || 'primary',
-      size: props['data.primaryButton.size'] || heroData.primaryButton.size || 'md',
-      href: props['data.primaryButton.href'] || heroData.primaryButton.href,
-      icon: props['data.primaryButton.icon'] || heroData.primaryButton.icon,
-      iconPosition: props['data.primaryButton.iconPosition'] || heroData.primaryButton.iconPosition || 'right',
+      text: props['data.primaryButton.text'] || 'Schedule a Call',
+      variant: props['data.primaryButton.variant'] || 'primary',
+      size: props['data.primaryButton.size'] || 'md',
+      href: props['data.primaryButton.href'] || undefined,
+      icon: props['data.primaryButton.icon'] || undefined,
+      iconPosition: props['data.primaryButton.iconPosition'] || 'right',
     },
-    secondaryButton: hasSecondaryButtonText ? {
-      text: hasSecondaryButtonText,
-      variant: props['data.secondaryButton.variant'] || heroData.secondaryButton?.variant || 'secondary',
-      size: props['data.secondaryButton.size'] || heroData.secondaryButton?.size || 'md',
-      href: props['data.secondaryButton.href'] || heroData.secondaryButton?.href,
-      icon: props['data.secondaryButton.icon'] || heroData.secondaryButton?.icon,
-      iconPosition: props['data.secondaryButton.iconPosition'] || heroData.secondaryButton?.iconPosition || 'right',
+    secondaryButton: props['data.secondaryButton.text'] ? {
+      text: props['data.secondaryButton.text'],
+      variant: props['data.secondaryButton.variant'] || 'secondary',
+      size: props['data.secondaryButton.size'] || 'md',
+      href: props['data.secondaryButton.href'] || undefined,
+      icon: props['data.secondaryButton.icon'] || undefined,
+      iconPosition: props['data.secondaryButton.iconPosition'] || 'right',
     } : undefined,
   }
 
-  // Debug log
-  console.log('Merged data:', { title: mergedData.title, subtitle: mergedData.subtitle })
+  // Build charOverrides from italicsStart/End if BOTH are provided and valid
+  // Only apply if both values exist, are numbers, and end > start
+  const charOverrides = (
+    typeof mergedData.italicsStart === 'number' &&
+    typeof mergedData.italicsEnd === 'number' &&
+    mergedData.italicsEnd > mergedData.italicsStart
+  )
+    ? [{ start: mergedData.italicsStart, end: mergedData.italicsEnd, style: { fontStyle: 'italic' } }]
+    : []
+
+  // Debug: log final values
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Hero render DEBUG:', {
+      propsKeys: Object.keys(props),
+      allPropsStringified: JSON.stringify(props, null, 2),
+
+      // Processed values
+      titleLineBreaks: mergedData.titleLineBreaks,
+      subtitleLineBreaks: mergedData.subtitleLineBreaks,
+      italicsStart: mergedData.italicsStart,
+      italicsEnd: mergedData.italicsEnd,
+      hasCharOverrides: charOverrides.length > 0,
+
+      // Raw values with different access patterns
+      'props[data.titleLineBreaks]': props['data.titleLineBreaks'],
+      'props[data.subtitleLineBreaks]': props['data.subtitleLineBreaks'],
+      'props[data.italicsStart]': props['data.italicsStart'],
+      'props[data.italicsEnd]': props['data.italicsEnd'],
+
+      // Try alternative access patterns
+      'props.data?.titleLineBreaks': props.data?.titleLineBreaks,
+      'props.data?.italicsStart': props.data?.italicsStart,
+    })
+  }
 
   // Simple fallback rendering if animations fail
   const isBuilder = typeof window !== 'undefined' && window.location.search.includes('builder.')
@@ -128,7 +187,7 @@ export default function Hero(props: any) {
           <div
             className='relative flex shrink-0 flex-col justify-center'
             style={{
-              maxWidth: '640px',
+              maxWidth: mergedData.titleMaxWidth || '640px',
               width: '100%',
             }}
           >
@@ -147,7 +206,8 @@ export default function Hero(props: any) {
                   to={{ opacity: 1, y: 0 }}
                   threshold={0.5}
                   rootMargin="-20px"
-                  lineBreaks={mergedData.lineBreaks || []}
+                  charOverrides={charOverrides}
+                  lineBreaks={mergedData.titleLineBreaks || []}
                 />
               </div>
             )}
@@ -158,7 +218,7 @@ export default function Hero(props: any) {
             <div
               className='relative flex shrink-0 flex-col content-fill items-start justify-start'
               style={{
-                maxWidth: '520px',
+                maxWidth: mergedData.subtitleMaxWidth || '640px',
                 width: 'auto',
               }}
             >

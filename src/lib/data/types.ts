@@ -18,8 +18,12 @@ export interface HeroData {
   backgroundImage?: string
   primaryButton: ButtonData
   secondaryButton?: ButtonData
-  lineBreaks?: number[]
+  titleLineBreaks?: number[]
   subtitleLineBreaks?: number[]
+  titleMaxWidth?: string
+  subtitleMaxWidth?: string
+  italicsStart?: number
+  italicsEnd?: number
 }
 
 export interface BenefitItemData {

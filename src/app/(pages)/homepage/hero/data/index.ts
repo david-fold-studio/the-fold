@@ -9,8 +9,13 @@ export const heroData: HeroData = {
     variant: "primary",
     size: "md"
   },
-  // Line breaks after "you" (word 4)
-  lineBreaks: [5],
+  // Line breaks after "you" (word 5)
+  titleLineBreaks: [5],
   // Subtitle line breaks after "needs,"
-  subtitleLineBreaks: [10]
+  subtitleLineBreaks: [10],
+  // Subtitle max width
+  subtitleMaxWidth: "640px",
+  // Italic styling for words: "just" (2), "for" (3), "you" (4)
+  italicsStart: 2,
+  italicsEnd: 4
 }

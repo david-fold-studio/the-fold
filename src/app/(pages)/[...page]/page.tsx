@@ -1,14 +1,7 @@
 "use client"
-import { builder, Builder, BuilderComponent } from '@builder.io/react'
+import { builder, BuilderComponent } from '@builder.io/react'
 import { useEffect, useState } from 'react'
 import { notFound } from 'next/navigation'
-import BuilderRegistry from '@/lib/builder-registry'
-
-// Initialize Builder
-Builder.registerComponent(BuilderRegistry, {
-  name: 'BuilderRegistry',
-  hideFromInsertMenu: true,
-})
 
 interface PageProps {
   params: Promise<{
@@ -22,11 +15,16 @@ export default function Page({ params }: PageProps) {
   const [urlPath, setUrlPath] = useState<string>('')
 
   useEffect(() => {
+    let isMounted = true
+
     async function initializeAndFetch() {
       try {
         // Await params to get the page path
         const resolvedParams = await params
         const path = '/' + (resolvedParams.page?.join('/') || '')
+
+        if (!isMounted) return
+
         setUrlPath(path)
 
         // Fetch Builder content
@@ -38,17 +36,25 @@ export default function Page({ params }: PageProps) {
             })
             .toPromise()
 
+          if (!isMounted) return
+
           setContent(content)
         }
       } catch (error) {
         console.error('Error fetching Builder content:', error)
       } finally {
-        setLoading(false)
+        if (isMounted) {
+          setLoading(false)
+        }
       }
     }
 
     initializeAndFetch()
-  }, [params])
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   if (loading) {
     return (
@@ -63,9 +69,10 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <>
-      <BuilderRegistry />
-      <BuilderComponent model="page" content={content} />
-    </>
+    <BuilderComponent
+      model="page"
+      content={content}
+      enableEditingUrl={true}
+    />
   )
 }

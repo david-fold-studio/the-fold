@@ -55,6 +55,56 @@ Builder.registerComponent(Hero, {
       helperText: 'Hero description text'
     },
     {
+      name: 'data.titleMaxWidth',
+      friendlyName: 'Title Max Width',
+      type: 'string',
+      defaultValue: '640px',
+      helperText: 'Maximum width of title text (e.g., "640px", "100%")'
+    },
+    {
+      name: 'data.subtitleMaxWidth',
+      friendlyName: 'Subtitle Max Width',
+      type: 'string',
+      defaultValue: '640px',
+      helperText: 'Maximum width of subtitle text (e.g., "640px", "100%")'
+    },
+    {
+      name: 'data.italicsStart',
+      friendlyName: 'Italics Start (Word Index)',
+      type: 'number',
+      helperText: 'Starting word index for italic text (optional, 0-based)'
+    },
+    {
+      name: 'data.italicsEnd',
+      friendlyName: 'Italics End (Word Index)',
+      type: 'number',
+      helperText: 'Ending word index for italic text (optional, 0-based)'
+    },
+    {
+      name: 'data.titleLineBreaks',
+      friendlyName: 'Title Line Breaks',
+      type: 'list',
+      helperText: 'Word indices where title should break to new line (optional)',
+      subFields: [
+        {
+          name: 'value',
+          type: 'number'
+        }
+      ]
+    },
+    {
+      name: 'data.subtitleLineBreaks',
+      friendlyName: 'Subtitle Line Breaks',
+      type: 'list',
+      helperText: 'Word indices where subtitle should break to new line (optional)',
+      subFields: [
+        {
+          name: 'value',
+          type: 'number'
+        }
+      ]
+    },
+    {
       name: 'data.videoSrc',
       friendlyName: 'Video Source',
       type: 'file',
